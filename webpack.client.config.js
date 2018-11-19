@@ -34,7 +34,10 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           {
             test: /\.(png|svg|jpg|gif)$/,
             use: {
-              loader: 'file-loader'
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]'
+              }
             }
           }
         ]
