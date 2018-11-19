@@ -3,7 +3,7 @@ import React from 'react';
 
 const Root = props => {
   const { children } = props;
-  return <div>{children}</div>;
+  return <div className="app-root">{children}</div>;
 };
 
 Root.propTypes = {
