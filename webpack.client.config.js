@@ -47,7 +47,6 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           template: './web/index.html',
           filename: 'index.html'
         }),
-        new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
           'process.env': {

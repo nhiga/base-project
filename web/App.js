@@ -6,6 +6,7 @@ import Root from './base/Root';
 import NotFound from './base/NotFound';
 
 import Home from './home/Home';
+import Search from './search/Search';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Root>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/search" component={Search} />
             <Route component={NotFound} />
           </Switch>
         </Root>

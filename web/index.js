@@ -6,26 +6,25 @@ import { AppContainer } from 'react-hot-loader';
 
 import App from './App';
 
-import '../style/main.scss';
-
 // const rootReducer = { page: 'Default' };
 // const store = createStore(rootReducer);
 
-ReactDOM.render(
-  <AppContainer>
-    <App />
-  </AppContainer>,
-  document.getElementById('root')
-);
+import '../style/base.scss';
+
+const renderApp = () => {
+  ReactDOM.render(
+    <AppContainer>
+      <App />
+    </AppContainer>,
+    document.getElementById('root')
+  );
+};
+
+renderApp();
 
 // NOTE: module.hot will be defined in development mode only
 if (module.hot) {
   module.hot.accept('./App', () => {
-    ReactDOM.render(
-      <AppContainer>
-        <App />
-      </AppContainer>,
-      document.getElementById('root')
-    );
+    renderApp();
   });
 }

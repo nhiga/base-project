@@ -17,7 +17,10 @@ module.exports = () => ({
       }
     ]
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ],
   devServer: {
     host: 'localhost',
     port: 3001,

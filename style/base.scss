@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -6,42 +10,6 @@ body {
 
 body {
   font-family: Helvetica, Sans-Serif;
-}
-
-.page-content {
-  width: 100%;
-  height: 100%;
-}
-
-.page-masthead {
-  height: 200px;
-  background-color: cornflowerblue;
-  padding: 10px;
-  text-align: center;
-
-  &-logo {
-    height: 100px;
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.page-title {
-  color: white;
-}
-
-.page-main {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 1em;
 }
 
 .form-group {
