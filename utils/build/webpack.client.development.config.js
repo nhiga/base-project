@@ -25,7 +25,10 @@ module.exports = () => ({
     host: 'localhost',
     port: 3001,
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   },
   devtool: 'cheap-eval-source-map'
 });

@@ -1,18 +1,20 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const { CSS_FOLDER } = require("../server.config");
 
 module.exports = () => ({
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: `${CSS_FOLDER}/[name].css`
     })
   ],
-  devtool: 'source-map'
+  devtool: "source-map"
 });

@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
-const { BUILD_FOLDER } = require('./utils/server.config');
-
-const modeConfig = mode =>
-  require(`./utils/build/webpack.server.${mode}.config`)(mode);
+const modeConfig = mode => require(`./utils/build/webpack.server.${mode}.config`)(mode);
 const presetConfig = require('./utils/build/loadPresets');
+
+const { BUILD_FOLDER } = require('./utils/server.config');
 
 module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
   // TODO: Replace console log with Logger component
@@ -27,6 +26,10 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
             test: /\.js?$/,
             use: 'babel-loader',
             exclude: /node_modules/
+          },
+          {
+            test: /\.scss$/,
+            use: ['css-loader', 'sass-loader']
           }
         ]
       },

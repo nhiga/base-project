@@ -1,20 +1,23 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
+import Header from '../base/Header';
+
 import './home.scss';
 
-import logo from '../../images/react-logo.svg';
+import splash from '../../images/landing-splash.jpg';
 
 class Home extends Component {
   render() {
     return (
-      <div className="page-content">
-        <div className="home-masthead">
-          <h1 className="home-title">React Base Project</h1>
-          <img className="home-masthead-logo" src={logo} alt="logo" />
+      <div>
+        <Header />
+        <div className="home__splash">
+          <h1 className="home__splash-title">splash title</h1>
+          <img className="home__splash-image" src={splash} alt="splash" />
         </div>
-        <div className="home-main">
-          To get started, edit web/home/Home.js and save to reload
+        <div className="page__content--center">
+          <span>Home page content</span>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { hydrate } from 'react-dom';
 // import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 // import { createStore } from 'redux';
 
 import App from './App';
@@ -11,16 +11,16 @@ import App from './App';
 
 import '../style/base.scss';
 
-const renderApp = () => {
-  ReactDOM.render(
-    <AppContainer>
+const renderApp = renderFn => {
+  renderFn(
+    <BrowserRouter>
       <App />
-    </AppContainer>,
+    </BrowserRouter>,
     document.getElementById('root')
   );
 };
 
-renderApp();
+renderApp(hydrate);
 
 // NOTE: module.hot will be defined in development mode only
 if (module.hot) {

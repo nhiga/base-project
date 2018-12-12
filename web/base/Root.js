@@ -1,13 +1,17 @@
+/* eslint-disable react/prefer-stateless-function */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 
-const Root = props => {
-  const { children } = props;
-  return <div className="app-root">{children}</div>;
-};
+class Root extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
 
-Root.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  render() {
+    const { children } = this.props;
+
+    return <div className="app-root">{children}</div>;
+  }
+}
 
 export default Root;

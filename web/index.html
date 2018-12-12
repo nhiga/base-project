@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Test Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    <div id="root" class="init">{{{content}}}</div>
+    <script>
+      const fn = () => {};
 
-<body>
-    <div id="root"></div>
-</body>
-
+      (function() {
+        if (
+          document.attachEvent
+            ? document.readyState === 'complete'
+            : document.readyState !== 'loading'
+        ) {
+          fn();
+        } else {
+          document.addEventListener('DOMContentLoaded', fn);
+        }
+      })();
+    </script>
+  </body>
 </html>
