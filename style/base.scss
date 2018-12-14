@@ -3,6 +3,13 @@
   src: url('../fonts/Muli-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Muli Light';
+  src: url('../fonts/Muli-Light.ttf') format('truetype');
+}
+
+@import './variables.scss';
+
 * {
   box-sizing: border-box;
 }
@@ -14,8 +21,8 @@ body {
 }
 
 body {
-  font-family: 'Muli', sans-serif;
-  color: #333333;
+  font: 1em $font-stack;
+  color: $primary-color;
 }
 
 input:focus {
