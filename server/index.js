@@ -1,12 +1,19 @@
 import http from 'http';
+import path from 'path';
 
+import ApplicationConfiguration from '../utils/application-configuration';
+import { PORT, BUILD_FOLDER, PUBLIC_FOLDER } from '../utils/server.config';
 import app from './app';
-import { PORT } from '../utils/server.config';
+
+const templateName = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUBLIC_FOLDER)}/index.html`);
+ApplicationConfiguration.compileTemplate(templateName);
 
 const server = http.createServer(app);
 let currentApp = app;
 server.listen(PORT);
-console.log(`Server is listening on port ${PORT}`); // eslint-disable-line no-console
+console.info(`[index] Server is listening on port ${PORT}`);
+
+// TODO: Add express error handler
 
 // NOTE: module.hot is defined by Webpack & will only be defined in development mode
 if (module.hot) {

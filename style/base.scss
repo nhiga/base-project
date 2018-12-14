@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Muli';
+  src: url('../fonts/Muli-Regular.ttf') format('truetype');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +14,8 @@ body {
 }
 
 body {
-  font-family: Helvetica, Sans-Serif;
+  font-family: 'Muli', sans-serif;
+  color: #333333;
 }
 
 input:focus {
@@ -21,10 +27,17 @@ a {
   text-decoration: none;
 }
 
-.page__content--center {
-  margin-top: 50px;
-  text-align: center;
+.page__content {
+  margin: 50px;
   font-size: 1em;
+
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left;
+  }
 }
 
 // .form-group {

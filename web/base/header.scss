@@ -1,12 +1,16 @@
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 75px;
   // margin-bottom: 20px;
   padding: 1em;
   background-color: cornflowerblue;
   text-align: center;
-  box-shadow: 0 3px 5px 0px lightgray;
+  box-shadow: 0 3px 5px 0px dimgray;
   display: flex;
   flex-direction: row;
+  z-index: 3;
 
   &__title {
     display: flex;
@@ -46,4 +50,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header__spacer {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  z-index: -1;
 }

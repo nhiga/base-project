@@ -22,20 +22,23 @@ class Header extends Component {
     const { title } = this.props;
 
     return (
-      <div className="header">
-        <div className="header__title">
-          <img className="header__title-logo" src={logo} alt="logo" />
-          <span className="header__title-text">{title}</span>
-        </div>
-        <div className="header__nav">
-          <div className="header__nav-link">
-            <Link to="/">Home</Link>
+      <div>
+        <div className="header__spacer" />
+        <div className="header">
+          <div className="header__title">
+            <img className="header__title-logo" src={logo} alt="logo" />
+            <span className="header__title-text">{title}</span>
           </div>
-          <div className="header__nav-link">
-            <Link to="/search">Search</Link>
-          </div>
-          <div className="header__nav-link">
-            <Link to="/about">About</Link>
+          <div className="header__nav">
+            <div className="header__nav-link">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="header__nav-link">
+              <Link to="/search">Search</Link>
+            </div>
+            <div className="header__nav-link">
+              <Link to="/about">About</Link>
+            </div>
           </div>
         </div>
       </div>

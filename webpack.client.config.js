@@ -1,5 +1,4 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const webpack = require('webpack');
@@ -10,9 +9,8 @@ const modeConfig = mode => require(`./utils/build/webpack.client.${mode}.config`
 const presetConfig = require('./utils/build/loadPresets');
 
 module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
-  // TODO: Replace console log with Logger component
-  console.log(`Client is building in ${mode} mode`); // eslint-disable-line no-console
-  console.log(`Client is processing ${presets || 'no'} presets`); // eslint-disable-line no-console
+  console.log(`[webpack.client.config] Executing in ${mode} mode with ${presets || 'no'} presets`); // eslint-disable-line no-console
+
   return webpackMerge(
     {
       mode,
@@ -50,6 +48,16 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
                 }
               }
             ]
+          },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]'
+              }
+            },
+            include: [path.resolve(__dirname, 'fonts')]
           }
         ]
       },
@@ -60,10 +68,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           }
         }),
         new HtmlWebPackPlugin({
-          template: './web/index.html',
-          alwaysWriteToDisk: true
+          template: './web/index.html'
         }),
-        new HtmlWebpackHarddiskPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
       ]
     },

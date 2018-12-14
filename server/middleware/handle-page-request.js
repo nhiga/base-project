@@ -7,7 +7,7 @@ import App from '../../web/App';
 import { HTTP_STATUS } from '../../utils/server.config';
 import ApplicationConfiguration from '../../utils/application-configuration';
 
-const handlePageRequest = async (req, res) => {
+const handlePageRequest = (req, res) => {
   try {
     // const initialState = getInitialState(oToken, visitId, iToken, branch);
     // const store = createStore(
@@ -26,9 +26,8 @@ const handlePageRequest = async (req, res) => {
     const page = ApplicationConfiguration.applyTemplate({ content });
     res.status(HTTP_STATUS.OK).send(page);
   } catch (err) {
-    res
-      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(`An internal server error occurred`);
+    console.error(`[handle-page-request] (handlePageRequest) An unhandled exception occurred`, err);
+    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).send(`An internal server error occurred`);
   }
 };
 

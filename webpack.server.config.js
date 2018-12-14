@@ -8,9 +8,8 @@ const presetConfig = require('./utils/build/loadPresets');
 const { BUILD_FOLDER } = require('./utils/server.config');
 
 module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
-  // TODO: Replace console log with Logger component
-  console.log(`Server is building in ${mode} mode`); // eslint-disable-line no-console
-  console.log(`Server is processing ${presets || 'no'} presets`); // eslint-disable-line no-console
+  console.log(`[webpack.server.config] Executing in ${mode} mode with ${presets || 'no'} presets`); // eslint-disable-line no-console
+
   return webpackMerge(
     {
       mode,
@@ -29,7 +28,18 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           },
           {
             test: /\.scss$/,
-            use: ['css-loader', 'sass-loader']
+            use: ['css-loader', 'postcss-loader', 'sass-loader']
+          },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]',
+                emitFile: false
+              }
+            },
+            include: [path.resolve(__dirname, 'fonts')]
           }
         ]
       },

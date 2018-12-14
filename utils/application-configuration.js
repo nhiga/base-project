@@ -1,20 +1,17 @@
-import fs from "fs";
-import Handlebars from "handlebars";
-import path from "path";
-
-import { BUILD_FOLDER, PUBLIC_FOLDER } from "./server.config";
+import fs from 'fs';
+import Handlebars from 'handlebars';
 
 const ApplicationConfiguration = {
   templateFile: null,
   compiledTemplate: null,
   getFile: (fileName = null) => {
     try {
+      console.info(`[ApplicationConfiguration] (getFile) filename: ${fileName}`);
       if (!ApplicationConfiguration.templateFile && fileName) {
-        ApplicationConfiguration.templateFile = fs.readFileSync(fileName, { encoding: "utf-8" });
+        ApplicationConfiguration.templateFile = fs.readFileSync(fileName, { encoding: 'utf-8' });
       }
     } catch (err) {
-      /* eslint-disable-next-line no-console */
-      console.log(`[application-configuration] Error occurred in getFile:`, err);
+      console.error(`[application-configuration] (getFile) An unhandled exception occurred`, err);
     }
 
     return ApplicationConfiguration.templateFile;
@@ -25,8 +22,7 @@ const ApplicationConfiguration = {
         ApplicationConfiguration.compiledTemplate = Handlebars.compile(templateName);
       }
     } catch (err) {
-      /* eslint-disable-next-line no-console */
-      console.log(`[application-configuration] Error occurred in compileTemplate:`, err);
+      console.error(`[application-configuration] (compileTemplate) An unhandled exception occurred`, err);
     }
 
     return ApplicationConfiguration.compiledTemplate;
@@ -36,14 +32,12 @@ const ApplicationConfiguration = {
 
     try {
       if (!ApplicationConfiguration.compiledTemplate) {
-        const templateName = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUBLIC_FOLDER)}/index.html`);
-        ApplicationConfiguration.compileTemplate(templateName);
+        console.error(`[application-configuration] (applyTemplate) Compiled template not found`);
       }
 
       renderedPage = ApplicationConfiguration.compiledTemplate({ content });
     } catch (err) {
-      /* eslint-disable-next-line no-console */
-      console.log(`[application-configuration] Error occurred in applyTemplate:`, err);
+      console.error(`[application-configuration] (applyTemplate) An unhandled exception occurred`, err);
     }
 
     return renderedPage;

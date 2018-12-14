@@ -6,15 +6,13 @@ import Header from '../base/Header';
 import './search.scss';
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { searchTerm: '' };
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-  }
+  state = {
+    searchTerm: ''
+  };
 
-  handleSearchChange(e) {
+  handleSearchChange = e => {
     this.setState({ searchTerm: e.target.value });
-  }
+  };
 
   render() {
     const { searchTerm } = this.state;
@@ -22,15 +20,20 @@ class Search extends Component {
     return (
       <div>
         <Header />
-        <div className="page__content--center">
-          <div className="search__input">
-            <input
-              className="search__input-text"
-              type="search"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={this.handleSearchChange}
-            />
+        <div className="page__content">
+          <div className="page__content--left">
+            <h2>Search</h2>
+          </div>
+          <div className="page__content--center">
+            <div className="search__input">
+              <input
+                className="search__input-text"
+                type="search"
+                placeholder="Search by name, album, or song"
+                value={searchTerm}
+                onChange={this.handleSearchChange}
+              />
+            </div>
           </div>
         </div>
       </div>

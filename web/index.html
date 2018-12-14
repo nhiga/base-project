@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Test Page</title>
+    <title>React Base Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -15,20 +15,5 @@
   <body>
     <!-- prettier-ignore -->
     <div id="root" class="init">{{{content}}}</div>
-    <script>
-      const fn = () => {};
-
-      (function() {
-        if (
-          document.attachEvent
-            ? document.readyState === 'complete'
-            : document.readyState !== 'loading'
-        ) {
-          fn();
-        } else {
-          document.addEventListener('DOMContentLoaded', fn);
-        }
-      })();
-    </script>
   </body>
 </html>
