@@ -3,7 +3,7 @@ const path = require('path');
 const webpackMerge = require('webpack-merge');
 const webpack = require('webpack');
 
-const { BUILD_FOLDER, PUBLIC_FOLDER, JS_FOLDER } = require('./utils/server.config');
+const { BUILD_FOLDER, PUBLIC_FOLDER, JS_FOLDER, IMAGES_FOLDER } = require('./utils/server.config');
 
 const modeConfig = mode => require(`./utils/build/webpack.client.${mode}.config`)(mode);
 const presetConfig = require('./utils/build/loadPresets');
@@ -68,7 +68,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           }
         }),
         new HtmlWebPackPlugin({
-          template: './web/index.html'
+          template: './web/index.html',
+          favicon: `./${IMAGES_FOLDER}/favicon.ico`
         }),
         new webpack.NoEmitOnErrorsPlugin()
       ]

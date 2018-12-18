@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router-dom';
 
-import Root from './base/Root';
-import NotFound from './base/NotFound';
+import Root from './Root/Root';
+import NotFound from './NotFound/NotFound';
 
-import Home from './home/Home';
-import Search from './search/Search';
-import About from './about/About';
+import Home from './Home/Home';
+import Search from './Search/Search';
+import About from './About/About';
 
 class App extends Component {
   render() {

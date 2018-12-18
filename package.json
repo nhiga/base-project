@@ -4,7 +4,8 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "build:client": "webpack --config webpack.client.config.js",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "rm -rf ./__build__ && npm run build:client -- --env.mode production && npm run build:server -- --env.mode production",
@@ -34,10 +35,14 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.4.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
@@ -47,13 +52,16 @@
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^4.6.0",
+    "jest": "^23.6.0",
     "just-wait": "^1.0.11",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.4",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.15.1",
     "react-hot-loader": "^4.3.11",
+    "regenerator-runtime": "^0.13.1",
     "sass-loader": "^7.1.0",
     "start-server-webpack-plugin": "^2.2.5",
     "style-loader": "^0.23.1",
@@ -64,5 +72,11 @@
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2",
     "write-file-webpack-plugin": "^4.5.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|less)$": "identity-obj-proxy"
+    }
   }
 }

@@ -11,7 +11,12 @@ ApplicationConfiguration.compileTemplate(templateName);
 const server = http.createServer(app);
 let currentApp = app;
 server.listen(PORT);
-console.info(`[index] Server is listening on port ${PORT}`);
+
+if (process && process.env && process.env.NODE_ENV === 'development') {
+  console.info(`[index] Server is running at http://localhost:${PORT}`);
+} else {
+  console.info(`[index] Server is listening on port ${PORT}`);
+}
 
 // TODO: Add express error handler
 

@@ -48,7 +48,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
           'process.env': {
-            BUILD_TARGET: JSON.stringify('server')
+            BUILD_TARGET: JSON.stringify('server'),
+            NODE_ENV: JSON.stringify(mode)
           }
         })
       ]

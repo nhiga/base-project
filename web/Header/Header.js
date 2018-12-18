@@ -22,7 +22,7 @@ class Header extends Component {
     const { title } = this.props;
 
     return (
-      <div>
+      <header>
         <div className="header__spacer" />
         <div className="header">
           <div className="header__title">
@@ -41,7 +41,7 @@ class Header extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }

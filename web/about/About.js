@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import Header from '../base/Header';
+import Header from '../Header/Header';
 
 class About extends Component {
   render() {
