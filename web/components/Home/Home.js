@@ -1,11 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import Header from '../Header/Header';
+import Header from 'components/Header';
 
+import splash from 'images/landing-splash.jpg';
 import './home.scss';
-
-import splash from '../../images/landing-splash.jpg';
 
 class Home extends Component {
   render() {

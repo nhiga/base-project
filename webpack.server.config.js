@@ -14,7 +14,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
     {
       mode,
       target: 'node',
-      entry: ['./server/index'],
+      entry: ['./server/server'],
       output: {
         path: path.resolve(__dirname, BUILD_FOLDER),
         filename: 'server.js'
@@ -35,11 +35,10 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
             use: {
               loader: 'file-loader',
               options: {
-                name: '[path][name].[ext]',
                 emitFile: false
               }
             },
-            include: [path.resolve(__dirname, 'fonts')]
+            include: [path.resolve(__dirname, 'web/fonts')]
           }
         ]
       },

@@ -3,9 +3,9 @@ import { renderToString } from 'react-dom/server';
 // import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 
-import App from '../../web/App';
-import { HTTP_STATUS } from '../../utils/server.config';
-import ApplicationConfiguration from '../../utils/application-configuration';
+import App from 'components/App';
+import { HTTP_STATUS } from 'utils/server.config';
+import ApplicationConfiguration from 'utils/application-configuration';
 
 const handlePageRequest = (req, res) => {
   try {

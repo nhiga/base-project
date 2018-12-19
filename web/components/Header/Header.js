@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { APP_TITLE } from '../../utils/client.config';
+import { APP_TITLE } from 'utils/client.config';
 
-import logo from '../../images/react-logo.svg';
-
+import logo from 'images/react-logo.svg';
 import './header.scss';
 
 class Header extends Component {

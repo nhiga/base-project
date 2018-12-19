@@ -15,7 +15,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
     {
       mode,
       target: 'web',
-      entry: ['./web/index.js'],
+      entry: ['./web/client.js'],
       output: {
         filename: `${JS_FOLDER}/client.js`,
         path: path.join(__dirname, BUILD_FOLDER, PUBLIC_FOLDER)
@@ -35,7 +35,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
               {
                 loader: 'file-loader',
                 options: {
-                  name: '[path][name].[ext]'
+                  name: '[name].[ext]',
+                  outputPath: 'images/'
                 }
               },
               {
@@ -54,10 +55,11 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
             use: {
               loader: 'file-loader',
               options: {
-                name: '[path][name].[ext]'
+                name: 'fonts/[name].[ext]',
+                publicPath: '/'
               }
             },
-            include: [path.resolve(__dirname, 'fonts')]
+            include: [path.resolve(__dirname, 'web/fonts')]
           }
         ]
       },
@@ -69,7 +71,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
         }),
         new HtmlWebPackPlugin({
           template: './web/index.html',
-          favicon: `./${IMAGES_FOLDER}/favicon.ico`
+          favicon: `./web/${IMAGES_FOLDER}/favicon.ico`
         }),
         new webpack.NoEmitOnErrorsPlugin()
       ]

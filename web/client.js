@@ -4,15 +4,15 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 // import { createStore } from 'redux';
 
-import App from './App';
+import App from 'components/App';
 
 // const rootReducer = { page: 'Default' };
 // const store = createStore(rootReducer);
 
-import '../style/base.scss';
+import 'styles/base.scss';
 
-const renderApp = renderFn => {
-  renderFn(
+const renderApp = () => {
+  hydrate(
     <BrowserRouter>
       <App />
     </BrowserRouter>,
@@ -20,11 +20,11 @@ const renderApp = renderFn => {
   );
 };
 
-renderApp(hydrate);
+renderApp();
 
 // NOTE: module.hot will be defined in development mode only
 if (module.hot) {
-  module.hot.accept('./App', () => {
+  module.hot.accept('./components/App', () => {
     renderApp();
   });
 }

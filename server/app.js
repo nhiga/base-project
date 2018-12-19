@@ -2,8 +2,16 @@ import compression from 'compression';
 import express from 'express';
 import path from 'path';
 
-import { BUILD_FOLDER, PUBLIC_FOLDER, JS_FOLDER, CSS_FOLDER, IMAGES_FOLDER, HTTP_STATUS } from '../utils/server.config';
-import { shouldCompress } from '../utils/server.utils';
+import {
+  BUILD_FOLDER,
+  CSS_FOLDER,
+  FONTS_FOLDER,
+  IMAGES_FOLDER,
+  JS_FOLDER,
+  PUBLIC_FOLDER,
+  HTTP_STATUS
+} from 'utils/server.config';
+import { shouldCompress } from 'utils/server.utils';
 import pkg from '../package.json';
 import handlePageRequest from './middleware/handle-page-request';
 
@@ -18,6 +26,7 @@ app.use((req, res, next) => {
 
 app.use('/css', express.static(path.join(BUILD_FOLDER, PUBLIC_FOLDER, CSS_FOLDER)));
 app.use('/images', express.static(path.join(BUILD_FOLDER, PUBLIC_FOLDER, IMAGES_FOLDER)));
+app.use('/fonts', express.static(path.join(BUILD_FOLDER, PUBLIC_FOLDER, FONTS_FOLDER)));
 app.use('/js', express.static(path.join(BUILD_FOLDER, PUBLIC_FOLDER, JS_FOLDER)));
 
 app.get('/api', (req, res) => {

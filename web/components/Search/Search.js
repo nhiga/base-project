@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import Header from '../Header/Header';
+import Header from 'components/Header';
 
 import './search.scss';
 
