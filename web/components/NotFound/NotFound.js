@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Header from 'components/Header';
+import ContentPage from 'components/ContentPage';
 
 const NotFound = () => (
-  <div className="page__not-found">
-    <Header />
-    <div className="page__content--center">
-      <h4>Page Not Found</h4>
+  <ContentPage>
+    <div className="content-page__main">
+      <h2 className="content-page__title">Page Not Found</h2>
     </div>
-  </div>
+  </ContentPage>
 );
 
 export default NotFound;

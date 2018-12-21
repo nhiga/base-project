@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &__link {
+    padding: 0 1em 0 1em;
+    color: white;
+
+    & > .active {
+      color: #cdf3fe;
+    }
+  }
+}

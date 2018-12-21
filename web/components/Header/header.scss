@@ -1,20 +1,30 @@
+@import '../../styles/variables.scss';
+
+$header-height: 75px;
+
 .header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 75px;
-  // margin-bottom: 20px;
-  padding: 1em;
-  background-color: cornflowerblue;
-  text-align: center;
-  box-shadow: 0 3px 5px 0px dimgray;
-  display: flex;
-  flex-direction: row;
   z-index: 3;
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    padding: 1em;
+    background-color: $primary-color-blue;
+    text-align: center;
+    box-shadow: 0 3px 5px 0px dimgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__title {
     display: flex;
     flex-direction: row;
+    justify-content: left;
     align-items: center;
 
     &-logo {
@@ -25,19 +35,6 @@
 
     &-text {
       font-size: 1.5em;
-      color: white;
-    }
-  }
-
-  &__nav {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-
-    &-link {
-      padding: 0 1em 0 1em;
       color: white;
     }
   }
@@ -55,6 +52,6 @@
 .header__spacer {
   position: relative;
   width: 100%;
-  height: 75px;
+  height: $header-height;
   z-index: -1;
 }

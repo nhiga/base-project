@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import NavBar from 'components/NavBar';
 import { APP_TITLE } from 'utils/client.config';
 
-import logo from 'images/react-logo.svg';
 import './header.scss';
+
+import logo from 'images/react-logo.svg';
 
 class Header extends Component {
   static propTypes = {
@@ -21,24 +23,16 @@ class Header extends Component {
     const { title } = this.props;
 
     return (
-      <header>
+      <header className="header">
         <div className="header__spacer" />
-        <div className="header">
+        <div className="header__content">
           <div className="header__title">
             <img className="header__title-logo" src={logo} alt="logo" />
-            <span className="header__title-text">{title}</span>
+            <span className="header__title-text">
+              <Link to="/">{title}</Link>
+            </span>
           </div>
-          <div className="header__nav">
-            <div className="header__nav-link">
-              <Link to="/">Home</Link>
-            </div>
-            <div className="header__nav-link">
-              <Link to="/search">Search</Link>
-            </div>
-            <div className="header__nav-link">
-              <Link to="/about">About</Link>
-            </div>
-          </div>
+          <NavBar />
         </div>
       </header>
     );

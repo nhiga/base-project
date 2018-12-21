@@ -9,7 +9,7 @@ import App from 'components/App';
 // const rootReducer = { page: 'Default' };
 // const store = createStore(rootReducer);
 
-import 'styles/base.scss';
+import 'styles/main.scss';
 
 const renderApp = () => {
   hydrate(

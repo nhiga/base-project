@@ -5,21 +5,20 @@ import { Route, Switch } from 'react-router-dom';
 
 import About from 'components/About';
 import Home from 'components/Home';
+import Landing from 'components/Landing';
 import NotFound from 'components/NotFound';
-import Root from 'components/Root';
 import Search from 'components/Search';
 
 class App extends Component {
   render() {
     return (
-      <Root>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search" component={Search} />
-          <Route path="/about" exact component={About} />
-          <Route component={NotFound} />
-        </Switch>
-      </Root>
+      <Switch>
+        <Route path="/" exact component={Landing} />
+        <Route path="/home" exact component={Home} />
+        <Route path="/search" exact component={Search} />
+        <Route path="/about" exact component={About} />
+        <Route component={NotFound} />
+      </Switch>
     );
   }
 }

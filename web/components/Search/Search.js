@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import Header from 'components/Header';
+import ContentPage from 'components/ContentPage';
 
 import './search.scss';
 
@@ -18,25 +18,20 @@ class Search extends Component {
     const { searchTerm } = this.state;
 
     return (
-      <div>
-        <Header />
-        <div className="page__content">
-          <div className="page__content--left">
-            <h2>Search</h2>
-          </div>
-          <div className="page__content--center">
-            <div className="search__input">
-              <input
-                className="search__input-text"
-                type="search"
-                placeholder="Search by name, album, or song"
-                value={searchTerm}
-                onChange={this.handleSearchChange}
-              />
-            </div>
+      <ContentPage>
+        <div className="content-page__main">
+          <h2 className="content-page__title">Search</h2>
+          <div className="search__input">
+            <input
+              className="search__input-text"
+              type="search"
+              placeholder="Search by name, album, or song"
+              value={searchTerm}
+              onChange={this.handleSearchChange}
+            />
           </div>
         </div>
-      </div>
+      </ContentPage>
     );
   }
 }

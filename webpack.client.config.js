@@ -35,8 +35,8 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
               {
                 loader: 'file-loader',
                 options: {
-                  name: '[name].[ext]',
-                  outputPath: 'images/'
+                  name: 'images/[name].[ext]',
+                  publicPath: '/'
                 }
               },
               {
