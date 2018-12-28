@@ -1,10 +1,21 @@
 // @import '../../styles/variables.scss';
 
 .home {
-  &__hero {
+  &__container {
     position: relative;
     width: 100%;
+  }
+
+  &__hero {
+    position: absolute;
+    width: 100%;
     height: 250px;
+    background-attachment: fixed;
+    background-image: url('../../images/home-1.jpg');
+    background-size: cover;
+    background-blend-mode: lighten;
+    background-position: left;
+    background-position-y: -450px;
 
     &-image {
       position: absolute;
@@ -15,5 +26,12 @@
       object-fit: cover;
       opacity: 0.6;
     }
+  }
+
+  &__main {
+    position: relative;
+    margin-top: 250px;
+    z-index: 2;
+    background-color: white;
   }
 }

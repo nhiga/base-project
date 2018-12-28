@@ -42,9 +42,13 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
               {
                 loader: 'image-webpack-loader',
                 options: {
+                  bypassOnDebug: false,
                   mozjpeg: {
                     progressive: true,
-                    quality: 60
+                    quality: 100
+                  },
+                  webp: {
+                    quality: 100
                   }
                 }
               }
