@@ -8,14 +8,14 @@ import './home.scss';
 // import hero from 'images/home-hero.jpg';
 
 class Home extends Component {
-  render() {
+  public render() {
     return (
       <ContentPage>
         <div className="home__container">
           <div className="home__hero">{/* <img className="home__hero-image" src={hero} alt="hero" /> */}</div>
 
           <div className="content-page__main home__main">
-            <p className="content-page__top">
+            <p>
               Lorem ipsum dolor sit amet, appareat qualisque elaboraret nec an, cu mea iudico cetero suscipit, quo te
               justo epicurei. Te pericula euripidis gloriatur est, ei pri vero clita voluptatum, patrioque maiestatis ei
               usu. Natum doctus invidunt no vel, quaeque omittam offendit ius eu. Quo et feugiat impedit liberavisse.
@@ -66,7 +66,7 @@ class Home extends Component {
               necessitatibus, has in dicant phaedrum qualisque. Per apeirian temporibus reformidans in, causae laboramus
               te vis, mazim consul tibique vim no.
             </p>
-            <p className="content-page__bottom">
+            <p>
               Has choro regione sententiae cu, ex pro elit putant facilis. Utamur mediocritatem sed ei, cu idque
               probatus patrioque nec. Mel aliquip mentitum invidunt ei, ne qui scripta tincidunt, ad qui enim
               vituperata. An illud intellegam sed. Consulatu gloriatur cu sea, vix cu inani lucilius delicatissimi. Ius

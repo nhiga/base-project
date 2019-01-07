@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Header from 'components/Header';
-import Footer from 'components/Footer/Footer';
+import Footer from 'components/Footer';
 
 import './content-page.scss';
 
 class ContentPage extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
-
-  render() {
+  public render() {
     const { children } = this.props;
 
     return (

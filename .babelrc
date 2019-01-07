@@ -9,17 +9,17 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    [
-      "module-resolver",
-      {
-        "alias": {
-          "components": "./web/components",
-          "images": "./web/images",
-          "styles": "./web/styles",
-          "utils": "./utils"
-        }
-      }
-    ],
+    // [
+    //   "module-resolver",
+    //   {
+    //     "alias": {
+    //       "components": "./web/components",
+    //       "images": "./web/images",
+    //       "styles": "./web/styles",
+    //       "utils": "./utils"
+    //     }
+    //   }
+    // ],
     "@babel/plugin-proposal-class-properties"
   ]
 }

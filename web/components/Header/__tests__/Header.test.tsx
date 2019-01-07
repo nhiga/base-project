@@ -8,14 +8,17 @@ import Header from '../Header';
 configure({ adapter: new Adapter() });
 
 describe('Header', () => {
-  it('renders', () => {
+  it('renders Header elements', () => {
     const component = mount(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     );
+    expect(component.find('.header__spacer')).toHaveLength(1);
+    expect(component.find('.header__area')).toHaveLength(1);
+    expect(component.find('.header__content')).toHaveLength(1);
     expect(component.find('.header__title')).toHaveLength(1);
-    expect(component.find('.header__nav')).toHaveLength(1);
-    expect(component.find('.header__nav-link')).toHaveLength(3);
+    expect(component.find('.header__title-logo')).toHaveLength(1);
+    expect(component.find('.header__title-text')).toHaveLength(1);
   });
 });

@@ -10,7 +10,7 @@ import NotFound from 'components/NotFound';
 import Search from 'components/Search';
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <Switch>
         <Route path="/" exact component={Landing} />

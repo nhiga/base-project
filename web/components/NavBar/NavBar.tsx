@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './navbar.scss';
 
 class NavBar extends Component {
-  render() {
+  public render() {
     return (
       <div className="navbar">
         <div className="navbar__link">

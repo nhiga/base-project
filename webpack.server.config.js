@@ -22,6 +22,16 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
       module: {
         rules: [
           {
+            test: /\.ts(x?)$/,
+            exclude: /node_modules/,
+            use: ['babel-loader', 'awesome-typescript-loader']
+          },
+          {
+            enforce: 'pre',
+            test: /\.js$/,
+            loader: 'source-map-loader'
+          },
+          {
             test: /\.js?$/,
             use: 'babel-loader',
             exclude: /node_modules/
@@ -51,7 +61,16 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
             NODE_ENV: JSON.stringify(mode)
           }
         })
-      ]
+      ],
+      resolve: {
+        extensions: ['.js', '.ts', '.tsx'],
+        alias: {
+          components: path.resolve(__dirname, 'web/components/'),
+          images: path.resolve(__dirname, 'web/images/'),
+          styles: path.resolve(__dirname, 'web/styles/'),
+          utils: path.resolve(__dirname, 'utils/')
+        }
+      }
     },
     modeConfig(mode),
     presetConfig({ mode, presets: presets || [] })

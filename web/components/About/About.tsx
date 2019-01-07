@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ContentPage from 'components/ContentPage';
 
 class About extends Component {
-  render() {
+  public render() {
     return (
       <ContentPage>
         <div className="content-page__main">

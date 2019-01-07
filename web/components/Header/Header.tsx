@@ -10,29 +10,31 @@ import './header.scss';
 
 import logo from 'images/react-logo.svg';
 
-class Header extends Component {
-  static propTypes = {
-    title: PropTypes.string
-  };
+interface IHeaderProps {
+  title?: string;
+}
 
-  static defaultProps = {
+class Header extends Component<IHeaderProps> {
+  private static defaultProps = {
     title: APP_TITLE
   };
 
-  render() {
+  public render() {
     const { title } = this.props;
 
     return (
       <header className="header">
         <div className="header__spacer" />
-        <div className="header__content">
-          <div className="header__title">
-            <img className="header__title-logo" src={logo} alt="logo" />
-            <span className="header__title-text">
-              <Link to="/">{title}</Link>
-            </span>
+        <div className="header__area">
+          <div className="header__content">
+            <div className="header__title">
+              <img className="header__title-logo" src={logo} alt="logo" />
+              <span className="header__title-text">
+                <Link to="/">{title}</Link>
+              </span>
+            </div>
+            <NavBar />
           </div>
-          <NavBar />
         </div>
       </header>
     );

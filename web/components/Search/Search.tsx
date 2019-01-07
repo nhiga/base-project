@@ -5,16 +5,20 @@ import ContentPage from 'components/ContentPage';
 
 import './search.scss';
 
-class Search extends Component {
-  state = {
+interface ISearchState {
+  searchTerm: string;
+}
+
+class Search extends Component<{}, ISearchState> {
+  public state = {
     searchTerm: ''
   };
 
-  handleSearchChange = e => {
+  public handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ searchTerm: e.target.value });
   };
 
-  render() {
+  public render() {
     const { searchTerm } = this.state;
 
     return (

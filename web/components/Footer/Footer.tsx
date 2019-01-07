@@ -1,21 +1,25 @@
 /* eslint-disable react/prefer-stateless-function */
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { APP_TITLE } from 'utils/client.config';
 
 import './footer.scss';
 
-class Footer extends Component {
-  static propTypes = {
-    title: PropTypes.string
-  };
+interface IFooterProps {
+  title?: string;
+}
 
-  static defaultProps = {
+interface IFooterState {
+  year: number;
+}
+
+class Footer extends Component<IFooterProps, IFooterState> {
+  private static defaultProps = {
     title: APP_TITLE
   };
 
-  constructor(props) {
+  constructor(props: IFooterProps) {
     super(props);
 
     const today = new Date();
@@ -26,7 +30,7 @@ class Footer extends Component {
     };
   }
 
-  render() {
+  public render() {
     const { year } = this.state;
     const { title } = this.props;
 

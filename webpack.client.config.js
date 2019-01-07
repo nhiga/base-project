@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpackMerge = require('webpack-merge');
@@ -15,13 +16,23 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
     {
       mode,
       target: 'web',
-      entry: ['./web/client.js'],
+      entry: ['./web/client.tsx'],
       output: {
         filename: `${JS_FOLDER}/client.js`,
         path: path.join(__dirname, BUILD_FOLDER, PUBLIC_FOLDER)
       },
       module: {
         rules: [
+          {
+            test: /\.ts(x?)$/,
+            exclude: /node_modules/,
+            use: ['babel-loader', 'awesome-typescript-loader']
+          },
+          {
+            enforce: 'pre',
+            test: /\.js$/,
+            loader: 'source-map-loader'
+          },
           {
             test: /\.js$/,
             use: {
@@ -77,8 +88,18 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           template: './web/index.html',
           favicon: `./web/${IMAGES_FOLDER}/favicon.ico`
         }),
-        new webpack.NoEmitOnErrorsPlugin()
-      ]
+        new webpack.NoEmitOnErrorsPlugin(),
+        new CopyWebpackPlugin([{ from: 'web/images', to: 'images' }])
+      ],
+      resolve: {
+        extensions: ['.js', '.ts', '.tsx'],
+        alias: {
+          components: path.resolve(__dirname, 'web/components/'),
+          images: path.resolve(__dirname, 'web/images/'),
+          styles: path.resolve(__dirname, 'web/styles/'),
+          utils: path.resolve(__dirname, 'utils/')
+        }
+      }
     },
     modeConfig(mode),
     presetConfig({ mode, presets: presets || [] })
