@@ -4,7 +4,7 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 // import { createStore } from 'redux';
 
-import App from 'components/App';
+import App from 'components/app/App';
 
 // const rootReducer = { page: 'Default' };
 // const store = createStore(rootReducer);
@@ -24,7 +24,7 @@ renderApp();
 
 // NOTE: module.hot will be defined in development mode only
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./components/app/App', () => {
     renderApp();
   });
 }

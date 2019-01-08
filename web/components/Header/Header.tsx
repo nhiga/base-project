@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import NavBar from 'components/NavBar';
+import NavBar from 'components/nav-bar/NavBar';
 import { APP_TITLE } from 'utils/client.config';
 
 import './header.scss';
@@ -25,7 +25,7 @@ class Header extends Component<IHeaderProps> {
     return (
       <header className="header">
         <div className="header__spacer" />
-        <div className="header__area">
+        <div className="header__visible">
           <div className="header__content">
             <div className="header__title">
               <img className="header__title-logo" src={logo} alt="logo" />

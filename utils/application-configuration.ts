@@ -1,10 +1,18 @@
 import fs from 'fs';
 import Handlebars from 'handlebars';
 
-const ApplicationConfiguration = {
-  templateFile: null,
+interface IAppConfig {
+  templateFile: string;
+  compiledTemplate: Handlebars.TemplateDelegate<any> | null;
+  getFile: (fileName: string) => string;
+  compileTemplate: (templateName: string) => void;
+  applyTemplate: ({ content }: { content: any }) => string | null;
+}
+
+const ApplicationConfiguration: IAppConfig = {
+  templateFile: '',
   compiledTemplate: null,
-  getFile: (fileName = null) => {
+  getFile: fileName => {
     try {
       console.info(`[ApplicationConfiguration] (getFile) filename: ${fileName}`);
       if (!ApplicationConfiguration.templateFile && fileName) {
@@ -16,7 +24,7 @@ const ApplicationConfiguration = {
 
     return ApplicationConfiguration.templateFile;
   },
-  compileTemplate: (templateName = null) => {
+  compileTemplate: templateName => {
     try {
       if (!ApplicationConfiguration.compiledTemplate && templateName) {
         ApplicationConfiguration.compiledTemplate = Handlebars.compile(templateName);
@@ -31,11 +39,11 @@ const ApplicationConfiguration = {
     let renderedPage = null;
 
     try {
-      if (!ApplicationConfiguration.compiledTemplate) {
+      if (!ApplicationConfiguration || !ApplicationConfiguration.compiledTemplate) {
         console.error(`[application-configuration] (applyTemplate) Compiled template not found`);
+      } else {
+        renderedPage = ApplicationConfiguration.compiledTemplate({ content });
       }
-
-      renderedPage = ApplicationConfiguration.compiledTemplate({ content });
     } catch (err) {
       console.error(`[application-configuration] (applyTemplate) An unhandled exception occurred`, err);
     }

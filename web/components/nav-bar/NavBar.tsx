@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import './navbar.scss';
+import './nav-bar.scss';
 
 class NavBar extends Component {
   public render() {

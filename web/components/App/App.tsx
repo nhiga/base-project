@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router-dom';
 
-import About from 'components/About';
-import Home from 'components/Home';
-import Landing from 'components/Landing';
-import NotFound from 'components/NotFound';
-import Search from 'components/Search';
+import About from 'components/about/About';
+import Home from 'components/home/Home';
+import Landing from 'components/landing/Landing';
+import NotFound from 'components/not-found/NotFound';
+import Search from 'components/search/Search';
 
 class App extends Component {
   public render() {

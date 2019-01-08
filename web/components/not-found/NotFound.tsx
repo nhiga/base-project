@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContentPage from 'components/ContentPage';
+import ContentPage from 'components/content-page/ContentPage';
 
 const NotFound = () => (
   <ContentPage>

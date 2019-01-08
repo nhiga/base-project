@@ -1,13 +1,14 @@
+import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 // import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 
-import App from 'components/App';
+import App from 'components/app/App';
 import { HTTP_STATUS } from 'utils/server.config';
 import ApplicationConfiguration from 'utils/application-configuration';
 
-const handlePageRequest = (req, res) => {
+const handlePageRequest = (req: express.Request, res: express.Response) => {
   try {
     // const initialState = getInitialState(oToken, visitId, iToken, branch);
     // const store = createStore(

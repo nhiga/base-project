@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import ContentPage from 'components/ContentPage';
+import ContentPage from 'components/content-page/ContentPage';
 
 import './home.scss';
 

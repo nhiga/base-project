@@ -15,7 +15,7 @@ describe('Header', () => {
       </MemoryRouter>
     );
     expect(component.find('.header__spacer')).toHaveLength(1);
-    expect(component.find('.header__area')).toHaveLength(1);
+    expect(component.find('.header__visible')).toHaveLength(1);
     expect(component.find('.header__content')).toHaveLength(1);
     expect(component.find('.header__title')).toHaveLength(1);
     expect(component.find('.header__title-logo')).toHaveLength(1);
