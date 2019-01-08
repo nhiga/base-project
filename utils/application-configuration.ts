@@ -1,18 +1,10 @@
 import fs from 'fs';
 import Handlebars from 'handlebars';
 
-interface IAppConfig {
-  templateFile: string;
-  compiledTemplate: Handlebars.TemplateDelegate<any> | null;
-  getFile: (fileName: string) => string;
-  compileTemplate: (templateName: string) => void;
-  applyTemplate: ({ content }: { content: any }) => string | null;
-}
-
-const ApplicationConfiguration: IAppConfig = {
+const ApplicationConfiguration = {
   templateFile: '',
-  compiledTemplate: null,
-  getFile: fileName => {
+  compiledTemplate: null as Handlebars.TemplateDelegate<any> | null,
+  getFile: (fileName: string): string => {
     try {
       console.info(`[ApplicationConfiguration] (getFile) filename: ${fileName}`);
       if (!ApplicationConfiguration.templateFile && fileName) {
@@ -24,10 +16,10 @@ const ApplicationConfiguration: IAppConfig = {
 
     return ApplicationConfiguration.templateFile;
   },
-  compileTemplate: templateName => {
+  compileTemplate: (template: string): Handlebars.TemplateDelegate<any> | null => {
     try {
-      if (!ApplicationConfiguration.compiledTemplate && templateName) {
-        ApplicationConfiguration.compiledTemplate = Handlebars.compile(templateName);
+      if (!ApplicationConfiguration.compiledTemplate && template) {
+        ApplicationConfiguration.compiledTemplate = Handlebars.compile(template);
       }
     } catch (err) {
       console.error(`[application-configuration] (compileTemplate) An unhandled exception occurred`, err);
@@ -35,14 +27,14 @@ const ApplicationConfiguration: IAppConfig = {
 
     return ApplicationConfiguration.compiledTemplate;
   },
-  applyTemplate: ({ content }) => {
+  renderTemplate: (data: { content: string }): string | null => {
     let renderedPage = null;
 
     try {
       if (!ApplicationConfiguration || !ApplicationConfiguration.compiledTemplate) {
         console.error(`[application-configuration] (applyTemplate) Compiled template not found`);
       } else {
-        renderedPage = ApplicationConfiguration.compiledTemplate({ content });
+        renderedPage = ApplicationConfiguration.compiledTemplate(data);
       }
     } catch (err) {
       console.error(`[application-configuration] (applyTemplate) An unhandled exception occurred`, err);

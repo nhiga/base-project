@@ -5,8 +5,8 @@ import ApplicationConfiguration from 'utils/application-configuration';
 import { PORT, BUILD_FOLDER, PUBLIC_FOLDER } from 'utils/server.config';
 import app from './app';
 
-const templateName = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUBLIC_FOLDER)}/index.html`);
-ApplicationConfiguration.compileTemplate(templateName);
+const template = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUBLIC_FOLDER)}/index.html`);
+ApplicationConfiguration.compileTemplate(template);
 
 const server = http.createServer(app);
 let currentApp = app;

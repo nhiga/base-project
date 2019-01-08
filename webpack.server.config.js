@@ -29,7 +29,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           {
             enforce: 'pre',
             test: /\.js$/,
-            loader: 'source-map-loader'
+            use: 'source-map-loader'
           },
           {
             test: /\.js?$/,

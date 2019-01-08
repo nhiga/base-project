@@ -31,13 +31,11 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
           {
             enforce: 'pre',
             test: /\.js$/,
-            loader: 'source-map-loader'
+            use: 'source-map-loader'
           },
           {
             test: /\.js$/,
-            use: {
-              loader: 'babel-loader'
-            },
+            use: 'babel-loader',
             exclude: /node_modules/
           },
           {

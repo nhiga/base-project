@@ -30,5 +30,5 @@ module.exports = () => ({
       'Access-Control-Allow-Origin': '*'
     }
   },
-  devtool: 'cheap-eval-source-map'
+  devtool: 'source-map'
 });

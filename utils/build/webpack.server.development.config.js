@@ -29,5 +29,5 @@ module.exports = () => ({
     ]
   },
   plugins: [new StartServerPlugin('server.js'), new webpack.HotModuleReplacementPlugin()],
-  devtool: 'cheap-eval-source-map'
+  devtool: 'source-map'
 });

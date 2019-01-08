@@ -24,8 +24,14 @@ const handlePageRequest = (req: express.Request, res: express.Response) => {
         {/* </Provider> */}
       </StaticRouter>
     );
-    const page = ApplicationConfiguration.applyTemplate({ content });
-    res.status(HTTP_STATUS.OK).send(page);
+    const page = ApplicationConfiguration.renderTemplate({ content });
+
+    if (page) {
+      res.status(HTTP_STATUS.OK).send(page);
+    } else {
+      console.error(`[handle-page-request] (handlePageRequest) Page not rendered`);
+      res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).send(`An internal server error occurred`);
+    }
   } catch (err) {
     console.error(`[handle-page-request] (handlePageRequest) An unhandled exception occurred`, err);
     res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).send(`An internal server error occurred`);
