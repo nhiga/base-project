@@ -9,7 +9,7 @@ class About extends Component {
       <ContentPage>
         <div className="content-page__main">
           <h2 className="content-page__title">About</h2>
-          <p className="content-page__top content-page__bottom">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel magna cursus, vulputate nisl sit amet,
             congue tellus. Duis tristique, tortor in lacinia fringilla, enim arcu elementum odio, vel porttitor velit
             massa a nunc. Sed vulputate aliquet sem, et consequat sem ultrices vitae. Fusce mattis interdum enim, sed

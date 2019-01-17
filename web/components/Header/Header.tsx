@@ -1,4 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -20,6 +19,7 @@ class Header extends Component<IHeaderProps> {
 
   public render() {
     const { title } = this.props;
+    console.log('​Header -> publicrender -> title', title);
 
     return (
       <header className="header">

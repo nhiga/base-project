@@ -4,7 +4,7 @@
   "description": "A base project using Webpack, Express, React, React Router, Jest, Enzyme, and TypeScript",
   "main": "index.jsx",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "build:client": "webpack --config webpack.client.config.js",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "rm -rf ./__build__ && npm run build:client -- --env.mode production && npm run build:server -- --env.mode production",

@@ -1,3 +1,7 @@
+/**
+ * This file is in CommonJS format so it can be used by Webpack as-is
+ */
+
 // Port configuration
 const DEFAULT_PORT = 5000;
 module.exports.PORT = process.env.PORT || DEFAULT_PORT;
