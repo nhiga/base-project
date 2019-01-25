@@ -16,7 +16,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
       target: 'node',
       entry: ['./server/server'],
       output: {
-        path: path.resolve(__dirname, BUILD_FOLDER),
+        path: path.join(__dirname, BUILD_FOLDER),
         filename: 'server.js'
       },
       module: {
