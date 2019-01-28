@@ -45,6 +45,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
                 loader: 'file-loader',
                 options: {
                   name: 'images/[name].[ext]',
+                  outputPath: path.join(__dirname, BUILD_FOLDER, PUBLIC_FOLDER, IMAGES_FOLDER),
                   publicPath: '/'
                 }
               },
@@ -94,6 +95,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
         alias: {
           components: path.resolve(__dirname, 'web/components/'),
           images: path.resolve(__dirname, 'web/images/'),
+          state: path.resolve(__dirname, 'web/state/'),
           styles: path.resolve(__dirname, 'web/styles/'),
           utils: path.resolve(__dirname, 'utils/')
         }

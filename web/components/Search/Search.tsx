@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import ContentPage from 'components/content-page/ContentPage';
+import PageContent from 'components/page-content/PageContent';
 
 import './search.scss';
 
@@ -22,9 +22,9 @@ class Search extends Component<{}, ISearchState> {
     const { searchTerm } = this.state;
 
     return (
-      <ContentPage>
-        <div className="content-page__main">
-          <h2 className="content-page__title">Search</h2>
+      <PageContent>
+        <div className="page-content__main">
+          <h2 className="page-content__title">Search</h2>
           <div className="search__input">
             <input
               className="search__input-text"
@@ -35,7 +35,7 @@ class Search extends Component<{}, ISearchState> {
             />
           </div>
         </div>
-      </ContentPage>
+      </PageContent>
     );
   }
 }

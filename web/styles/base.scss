@@ -26,7 +26,8 @@ a {
 }
 
 .button__cta {
-  height: 3em;
+  height: 2.5em;
+  min-width: 100px;
   color: white;
   padding: 0.5em 1em 0.5em 1em;
   font: 1em $font-stack-light;

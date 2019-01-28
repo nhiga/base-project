@@ -4,14 +4,14 @@ import React, { Component } from 'react';
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
 
-import './content-page.scss';
+import './page-content.scss';
 
-class ContentPage extends Component {
+class PageContent extends Component {
   public render() {
     const { children } = this.props;
 
     return (
-      <div className="content-page">
+      <div className="page-content">
         <Header />
         {children}
         <Footer />
@@ -20,4 +20,4 @@ class ContentPage extends Component {
   }
 }
 
-export default ContentPage;
+export default PageContent;

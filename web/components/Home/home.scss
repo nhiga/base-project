@@ -15,7 +15,8 @@
     background-size: cover;
     background-blend-mode: lighten;
     background-position: left;
-    background-position-y: -450px;
+    // TODO: Use a responsive image to fix image position
+    // background-position-y: -450px;
 
     &-image {
       position: absolute;
@@ -30,7 +31,7 @@
 
   &__main {
     position: relative;
-    margin-top: 250px;
+    // margin-top: 250px;
     z-index: 2;
     background-color: white;
   }

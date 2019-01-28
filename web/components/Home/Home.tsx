@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import ContentPage from 'components/content-page/ContentPage';
+import PageContent from 'components/page-content/PageContent';
 
 import './home.scss';
 
@@ -10,11 +10,11 @@ import './home.scss';
 class Home extends Component {
   public render() {
     return (
-      <ContentPage>
+      <PageContent>
         <div className="home__container">
-          <div className="home__hero">{/* <img className="home__hero-image" src={hero} alt="hero" /> */}</div>
-
-          <div className="content-page__main home__main">
+          {/* <div className="home__hero"><img className="home__hero-image" src={hero} alt="hero" /></div> */}
+          <div className="page-content__main home__main">
+            <h2 className="page-content__title">Home</h2>
             <p>
               Lorem ipsum dolor sit amet, appareat qualisque elaboraret nec an, cu mea iudico cetero suscipit, quo te
               justo epicurei. Te pericula euripidis gloriatur est, ei pri vero clita voluptatum, patrioque maiestatis ei
@@ -97,7 +97,7 @@ class Home extends Component {
             </p>
           </div>
         </div>
-      </ContentPage>
+      </PageContent>
     );
   }
 }

@@ -1,14 +1,14 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-import ContentPage from 'components/content-page/ContentPage';
+import PageContent from 'components/page-content/PageContent';
 
 class About extends Component {
   public render() {
     return (
-      <ContentPage>
-        <div className="content-page__main">
-          <h2 className="content-page__title">About</h2>
+      <PageContent>
+        <div className="page-content__main">
+          <h2 className="page-content__title">About</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel magna cursus, vulputate nisl sit amet,
             congue tellus. Duis tristique, tortor in lacinia fringilla, enim arcu elementum odio, vel porttitor velit
@@ -22,7 +22,7 @@ class About extends Component {
             elit, a laoreet est dictum id.
           </p>
         </div>
-      </ContentPage>
+      </PageContent>
     );
   }
 }

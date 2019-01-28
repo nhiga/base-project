@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Login from '../login/Login';
+
 import './landing.scss';
 
 class Landing extends Component {
@@ -17,12 +19,13 @@ class Landing extends Component {
     return (
       <>
         <div id="landing-hero" className="landing__hero">
-          <h1 className="landing__hero-title">hello</h1>
+          {/* <h1 className="landing__hero-title">hello</h1>
           <Link to="/home">
             <button type="button" className="button__cta">
               let&#39;s get started
             </button>
-          </Link>
+          </Link> */}
+          <Login />
         </div>
       </>
     );

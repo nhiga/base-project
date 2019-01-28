@@ -67,6 +67,7 @@ module.exports = ({ mode, presets } = { mode: 'production', presets: [] }) => {
         alias: {
           components: path.resolve(__dirname, 'web/components/'),
           images: path.resolve(__dirname, 'web/images/'),
+          state: path.resolve(__dirname, 'web/state/'),
           styles: path.resolve(__dirname, 'web/styles/'),
           utils: path.resolve(__dirname, 'utils/')
         }

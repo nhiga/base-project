@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+.login {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  padding: 2em;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  &__fields {
+    width: 100%;
+    margin-top: 2em;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2em;
+  }
+}
+
+.form {
+  &__input-group {
+    position: relative;
+    margin-top: 1em;
+
+    &.focused .form__label {
+      transform: translateY(-125%);
+      font-size: 0.75em;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    color: #999;
+    background-color: #fff;
+    z-index: 10;
+    transition: transform 150ms ease-out, font-size 150ms ease-out;
+  }
+
+  &__input {
+    position: relative;
+    padding: 12px 0px 5px 0;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 1px 0 0 #e5e5e5;
+    transition: box-shadow 150ms ease-out;
+    font-family: $font-stack;
+    font-size: 1.2em;
+
+    &:focus {
+      box-shadow: 0 2px 0 0 lightblue;
+    }
+  }
+
+  &__link {
+    margin-top: 0.5em;
+    font-size: 0.75em;
+    color: $primary-color-blue;
+  }
+}

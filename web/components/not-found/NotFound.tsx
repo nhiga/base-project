@@ -1,13 +1,13 @@
 import React from 'react';
 
-import ContentPage from 'components/content-page/ContentPage';
+import PageContent from 'components/page-content/PageContent';
 
 const NotFound = () => (
-  <ContentPage>
-    <div className="content-page__main">
-      <h2 className="content-page__title">Page Not Found</h2>
+  <PageContent>
+    <div className="page-content__main">
+      <h2 className="page-content__title">Page Not Found</h2>
     </div>
-  </ContentPage>
+  </PageContent>
 );
 
 export default NotFound;
