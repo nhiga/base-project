@@ -18,12 +18,20 @@ declare global {
   }
 }
 
-const initialState = {
-  session: sessionInitialState,
-  user: userInitialState
-};
+let initialState;
+let isServerRendered = false;
+if (window.__PRELOADED_STATE__ && window.__PRELOADED_STATE__ !== '{{{state}}}') {
+  initialState = JSON.parse(window.__PRELOADED_STATE__);
+  isServerRendered = true;
+} else {
+  initialState = {
+    session: sessionInitialState,
+    user: userInitialState
+  };
+}
+delete window.__PRELOADED_STATE__;
+// TODO: Remove preloaded state script element
 
-// TODO: Get initial state from server via window object
 const store = createStore(
   combineReducers({ session: sessionReducer, user: userReducer }),
   initialState,
@@ -41,7 +49,7 @@ const renderApp = (renderFn: Renderer) => {
   );
 };
 
-if (window.__PRELOADED_STATE__) {
+if (isServerRendered) {
   console.log(`[client] hydrating`);
   renderApp(hydrate);
 } else {

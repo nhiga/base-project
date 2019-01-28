@@ -27,7 +27,7 @@ const ApplicationConfiguration = {
 
     return ApplicationConfiguration.compiledTemplate;
   },
-  renderTemplate: (data: { content: string }): string | null => {
+  renderTemplate: (data: { state: string; content: string }): string | null => {
     let renderedPage = null;
 
     try {

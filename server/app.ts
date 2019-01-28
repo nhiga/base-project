@@ -9,7 +9,7 @@ import pageController from './controllers/page-controller';
 import restRouter from './routes/rest-router';
 
 const app = express();
-// Compile the page template used for rendering
+// Compile the page template used for rendering. NOTE: This only happens on server startup
 const template = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUBLIC_FOLDER)}/index.html`);
 ApplicationConfiguration.compileTemplate(template);
 

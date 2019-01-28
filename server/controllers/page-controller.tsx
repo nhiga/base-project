@@ -20,7 +20,9 @@ const pageController = (req: express.Request, res: express.Response) => {
     // const branch = matchRoutes(routes, req.originalUrl)
     // const initialState = getInitialState(branch);
     const initialState = {
-      session: sessionInitialState,
+      session: {
+        ot: 'DEFAULT_SERVER_TOKEN'
+      },
       user: userInitialState
     };
 
@@ -37,7 +39,7 @@ const pageController = (req: express.Request, res: express.Response) => {
         </Provider>
       </StaticRouter>
     );
-    const page = ApplicationConfiguration.renderTemplate({ content });
+    const page = ApplicationConfiguration.renderTemplate({ state: JSON.stringify(store.getState()), content });
 
     if (page) {
       res.status(HTTP_STATUS.OK).send(page);
