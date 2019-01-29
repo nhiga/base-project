@@ -19,12 +19,6 @@ class Landing extends Component {
     return (
       <>
         <div id="landing-hero" className="landing__hero">
-          {/* <h1 className="landing__hero-title">hello</h1>
-          <Link to="/home">
-            <button type="button" className="button__cta">
-              let&#39;s get started
-            </button>
-          </Link> */}
           <Login />
         </div>
       </>

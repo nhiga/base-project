@@ -5,16 +5,19 @@ import PageContent from 'components/page-content/PageContent';
 
 import './home.scss';
 
-// import hero from 'images/home-hero.jpg';
+import hero from 'images/home-1.jpg';
 
 class Home extends Component {
   public render() {
     return (
       <PageContent>
+        <div className="home__hero">
+          <img className="home__hero-image" src={hero} alt="hero" />
+          <h1 className="home__hero-title">Hello</h1>
+        </div>
         <div className="home__container">
-          {/* <div className="home__hero"><img className="home__hero-image" src={hero} alt="hero" /></div> */}
           <div className="page-content__main home__main">
-            <h2 className="page-content__title">Home</h2>
+            {/* <h2 className="page-content__title">Home</h2> */}
             <p>
               Lorem ipsum dolor sit amet, appareat qualisque elaboraret nec an, cu mea iudico cetero suscipit, quo te
               justo epicurei. Te pericula euripidis gloriatur est, ei pri vero clita voluptatum, patrioque maiestatis ei

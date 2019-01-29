@@ -1,8 +1,6 @@
 .page-content {
   width: 100%;
   min-height: 100vh;
-  max-width: 900px;
-  margin: 0px auto 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,8 +12,11 @@
   }
 
   &__main {
+    max-width: 1200px;
     width: 100%;
+    margin: 0px auto 0px auto;
     padding: 50px 50px 0 50px;
+    background-color: #ffffff;
     flex-grow: 1;
   }
 }
