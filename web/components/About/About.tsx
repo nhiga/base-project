@@ -7,7 +7,7 @@ class About extends Component {
   public render() {
     return (
       <PageContent>
-        <div className="page-content__main">
+        <main className="page-content__main">
           <h2 className="page-content__title">About</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel magna cursus, vulputate nisl sit amet,
@@ -21,7 +21,7 @@ class About extends Component {
             lacus at sollicitudin. Curabitur faucibus nibh augue, a volutpat turpis commodo id. In aliquet tincidunt
             elit, a laoreet est dictum id.
           </p>
-        </div>
+        </main>
       </PageContent>
     );
   }

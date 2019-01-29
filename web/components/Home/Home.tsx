@@ -13,11 +13,10 @@ class Home extends Component {
       <PageContent>
         <div className="home__hero">
           <img className="home__hero-image" src={hero} alt="hero" />
-          <h1 className="home__hero-title">Hello</h1>
+          <h1 className="home__hero-title">Welcome</h1>
         </div>
         <div className="home__container">
-          <div className="page-content__main home__main">
-            {/* <h2 className="page-content__title">Home</h2> */}
+          <main className="page-content__main home__main">
             <p>
               Lorem ipsum dolor sit amet, appareat qualisque elaboraret nec an, cu mea iudico cetero suscipit, quo te
               justo epicurei. Te pericula euripidis gloriatur est, ei pri vero clita voluptatum, patrioque maiestatis ei
@@ -98,7 +97,7 @@ class Home extends Component {
               argumentum efficiantur. His velit praesent ut. An duo malorum forensibus assueverit. Duo tritani
               intellegebat ne, atomorum antiopam et vis.
             </p>
-          </div>
+          </main>
         </div>
       </PageContent>
     );

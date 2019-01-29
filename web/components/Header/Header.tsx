@@ -13,28 +13,44 @@ interface IHeaderProps {
 }
 
 class Header extends Component<IHeaderProps> {
+  public state = {
+    isMobileNavOpen: false
+  };
   private static defaultProps = {
     title: APP_TITLE
   };
-
+  private handleMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    this.setState({ isMobileNavOpen: !this.state.isMobileNavOpen });
+  };
   public render() {
+    const { isMobileNavOpen } = this.state;
     const { title } = this.props;
 
     return (
-      <header className="header">
-        <div className="header__spacer" />
-        <div className="header__visible">
-          <div className="header__content">
-            <div className="header__title">
-              <img className="header__title-logo" src={logo} alt="logo" />
-              <span className="header__title-text">
-                <Link to="/">{title}</Link>
-              </span>
+      <>
+        <header className="header">
+          <div className="header__spacer" />
+          <div className="header__visible">
+            <div className="header__content">
+              <div className="header__title">
+                <img className="header__title-logo" src={logo} alt="logo" />
+                <span className="header__title-text">
+                  <Link to="/">{title}</Link>
+                </span>
+              </div>
+              <button className="header__menu-btn" onClick={this.handleMenuClick}>
+                <i className={`fas ${isMobileNavOpen ? 'fa-times' : 'fa-bars'}`} />
+              </button>
+              <div className="header__inline-nav">
+                <NavBar />
+              </div>
             </div>
-            <NavBar />
           </div>
+        </header>
+        <div className={`header__mobile-nav${isMobileNavOpen ? ' open' : ''}`}>
+          <NavBar />
         </div>
-      </header>
+      </>
     );
   }
 }

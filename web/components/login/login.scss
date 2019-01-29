@@ -6,7 +6,7 @@
   width: 300px;
   padding: 2em;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: $color-white;
 
   &__fields {
     width: 100%;
@@ -67,6 +67,6 @@
   &__link {
     margin-top: 0.5em;
     font-size: 0.75em;
-    color: $primary-color-blue;
+    color: $color-blue;
   }
 }

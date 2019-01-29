@@ -7,23 +7,25 @@ import './nav-bar.scss';
 class NavBar extends Component {
   public render() {
     return (
-      <div className="navbar">
-        <div className="navbar__link">
-          <NavLink exact to="/home">
-            Home
-          </NavLink>
-        </div>
-        <div className="navbar__link">
-          <NavLink exact to="/search">
-            Search
-          </NavLink>
-        </div>
-        <div className="navbar__link">
-          <NavLink exact to="/about">
-            About
-          </NavLink>
-        </div>
-      </div>
+      <nav className="navbar">
+        <ul>
+          <li className="navbar__link">
+            <NavLink exact to="/home">
+              Home
+            </NavLink>
+          </li>
+          <li className="navbar__link">
+            <NavLink exact to="/search">
+              Search
+            </NavLink>
+          </li>
+          <li className="navbar__link">
+            <NavLink exact to="/about">
+              About
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     );
   }
 }

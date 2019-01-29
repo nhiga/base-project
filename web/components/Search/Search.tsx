@@ -23,7 +23,7 @@ class Search extends Component<{}, ISearchState> {
 
     return (
       <PageContent>
-        <div className="page-content__main">
+        <main className="page-content__main">
           <h2 className="page-content__title">Search</h2>
           <div className="search__input">
             <input
@@ -34,7 +34,7 @@ class Search extends Component<{}, ISearchState> {
               onChange={this.handleSearchChange}
             />
           </div>
-        </div>
+        </main>
       </PageContent>
     );
   }
