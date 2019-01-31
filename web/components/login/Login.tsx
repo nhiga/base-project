@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 
 import { sessionSetOAuthToken } from 'state/redux/actions/session-actions';
 import { UserName, userSetName } from 'state/redux/actions/user-actions';
+import TextInput from 'components/text-input/TextInput';
 
 import './login.scss';
 
@@ -14,34 +15,24 @@ interface LoginProps {
 }
 
 // TODO: Define the state interface (how do we define dynamic key names?)
+interface LoginState {
+  firstName: string;
+  lastName: string;
+  redirectToHome: boolean;
+  [x: string]: string | boolean;
+}
 
-class Login extends React.Component<LoginProps> {
+class Login extends React.Component<LoginProps, LoginState> {
   public state = {
     firstName: '',
-    firstNameFocus: false,
     lastName: '',
-    lastNameFocus: false,
     redirectToHome: false
-  };
-  private handleFieldFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    const fieldName = `${e.target.id}Focus`;
-    this.setState({
-      [fieldName]: true
-    });
   };
   private handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fieldName = e.target.id;
     this.setState({
       [fieldName]: e.target.value
     });
-  };
-  private handleFieldBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value || e.target.value.length < 1) {
-      const fieldName = `${e.target.id}Focus`;
-      this.setState({
-        [fieldName]: false
-      });
-    }
   };
   public handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -62,34 +53,8 @@ class Login extends React.Component<LoginProps> {
     return (
       <form className="login">
         <section className="login__fields">
-          <div className={`form__input-group${this.state.firstNameFocus ? ' focused' : ''}`}>
-            <label htmlFor="firstName" className="form__label">
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              className="form__input"
-              value={this.state.firstName}
-              onFocus={this.handleFieldFocus}
-              onChange={this.handleFieldChange}
-              onBlur={this.handleFieldBlur}
-            />
-          </div>
-          <div className={`form__input-group${this.state.lastNameFocus ? ' focused' : ''}`}>
-            <label htmlFor="lastName" className="form__label">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              className="form__input"
-              value={this.state.lastName}
-              onFocus={this.handleFieldFocus}
-              onChange={this.handleFieldChange}
-              onBlur={this.handleFieldBlur}
-            />
-          </div>
+          <TextInput inputId="firstName" label="First Name" onChange={this.handleFieldChange} />
+          <TextInput inputId="lastName" label="Last Name" onChange={this.handleFieldChange} />
         </section>
         <section className="login__cta-section">
           <input type="submit" value="log in" className="button__cta" onClick={this.handleSubmit} />
