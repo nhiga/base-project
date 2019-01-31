@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import 'styles/variables.scss';
 
 .login {
   position: relative;
@@ -18,7 +18,7 @@
     align-items: center;
   }
 
-  &__cta {
+  &__cta-section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -43,7 +43,7 @@
     left: 0;
     top: 15px;
     color: #999;
-    background-color: #fff;
+    background-color: $color-white;
     z-index: 10;
     transition: transform 150ms ease-out, font-size 150ms ease-out;
   }

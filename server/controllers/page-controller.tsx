@@ -12,6 +12,8 @@ import ApplicationConfiguration from 'utils/application-configuration';
 
 const pageController = (req: express.Request, res: express.Response) => {
   try {
+    // TODO: Retrieve CMS content
+    // const branch = matchRoutes(routes, req.originalUrl)
     // const initialState = getInitialState(branch);
     const initialState = {
       session: {

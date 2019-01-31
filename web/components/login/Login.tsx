@@ -1,15 +1,14 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Dispatch } from 'redux';
 
-import { sessionSetOAuthToken } from '../../state/redux/actions/session-actions';
-import { UserName, userSetName } from '../../state/redux/actions/user-actions';
+import { sessionSetOAuthToken } from 'state/redux/actions/session-actions';
+import { UserName, userSetName } from 'state/redux/actions/user-actions';
 
 import './login.scss';
 
 interface LoginProps {
-  user: UserName;
   setName: (name: UserName) => void;
   setOAuthToken: (token: string) => void;
 }
@@ -92,7 +91,7 @@ class Login extends React.Component<LoginProps> {
             />
           </div>
         </section>
-        <section className="login__cta">
+        <section className="login__cta-section">
           <input type="submit" value="log in" className="button__cta" onClick={this.handleSubmit} />
           <Link to="/home" className="form__link">
             register
@@ -103,10 +102,6 @@ class Login extends React.Component<LoginProps> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return { user: state.user };
-};
-
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setName: (name: UserName) => dispatch(userSetName(name)),
@@ -115,6 +110,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login);

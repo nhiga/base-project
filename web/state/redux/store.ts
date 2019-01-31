@@ -5,9 +5,8 @@ import thunk from 'redux-thunk';
 
 import { SessionState } from './actions/session-actions';
 import { UserState } from './actions/user-actions';
-import sessionReducer, { initialState as sessionInitialState } from './reducers/session-reducer';
-import userReducer, { initialState as userInitialState } from './reducers/user-reducer';
-import { Session } from 'inspector';
+import sessionReducer from './reducers/session-reducer';
+import userReducer from './reducers/user-reducer';
 
 // TODO: Implement redux-persist
 
@@ -21,9 +20,6 @@ interface ServerState {
 }
 
 const configureStore = (initialState: State | ServerState) => {
-  // TODO: Retrieve CMS content
-  // const branch = matchRoutes(routes, req.originalUrl)
-
   return createStore(
     combineReducers({ session: sessionReducer, user: userReducer }),
     initialState,

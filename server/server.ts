@@ -1,8 +1,9 @@
 import http from 'http';
-import path from 'path';
 
-import { PORT, BUILD_FOLDER, PUBLIC_FOLDER } from 'utils/server.config';
+import { PORT } from 'utils/server.config';
 import app from './app';
+
+// TODO: Setup logger
 
 const server = http.createServer(app);
 let currentApp = app;
