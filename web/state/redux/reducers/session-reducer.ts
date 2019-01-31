@@ -1,12 +1,12 @@
-import { SESSION_SET_TOKEN } from '../actions/session-actions';
+import { SESSION_SET_OAUTH_TOKEN, SessionState, SessionAction } from '../actions/session-actions';
 
 export const initialState = {
   ot: 'DEFAULT_TOKEN'
 };
 
-const sessionReducer = (state = initialState, action: any) => {
+const sessionReducer = (state: SessionState = initialState, action: SessionAction) => {
   switch (action.type) {
-    case SESSION_SET_TOKEN:
+    case SESSION_SET_OAUTH_TOKEN:
       state = {
         ...state,
         ot: action.payload

@@ -35,11 +35,13 @@ class Header extends Component<IHeaderProps> {
               <div className="header__title">
                 <img className="header__title-logo" src={logo} alt="logo" />
                 <span className="header__title-text">
-                  <Link to="/">{title}</Link>
+                  <Link id="header__landing-link" to="/">
+                    {title}
+                  </Link>
                 </span>
               </div>
-              <button className="header__menu-btn" onClick={this.handleMenuClick}>
-                <i className={`fas ${isMobileNavOpen ? 'fa-times' : 'fa-bars'}`} />
+              <button id="header__menu-btn" className="header__menu-btn" onClick={this.handleMenuClick}>
+                <i id="header__menu-btn-icon" className={`fas ${isMobileNavOpen ? 'fa-times' : 'fa-bars'}`} />
               </button>
               <div className="header__inline-nav">
                 <NavBar />
@@ -47,7 +49,7 @@ class Header extends Component<IHeaderProps> {
             </div>
           </div>
         </header>
-        <div className={`header__mobile-nav${isMobileNavOpen ? ' open' : ''}`}>
+        <div id="header__mobile-nav" className={`header__mobile-nav${isMobileNavOpen ? ' open' : ''}`}>
           <NavBar />
         </div>
       </>

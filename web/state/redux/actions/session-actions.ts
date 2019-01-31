@@ -1,12 +1,22 @@
-export const SESSION_SET_TOKEN = 'SESSION_SET_TOKEN';
+export const SESSION_SET_OAUTH_TOKEN = 'SESSION_SET_OAUTH_TOKEN';
+export type SESSION_SET_OAUTH_TOKEN = typeof SESSION_SET_OAUTH_TOKEN;
 
-export const initialState = {
-  ot: 'DEFAULT_TOKEN'
-};
+interface OAuthToken {
+  ot: string;
+}
 
-export const sessionSetToken = (token: string) => {
+export type SessionState = OAuthToken;
+
+export interface SessionSetOAuthToken {
+  type: SESSION_SET_OAUTH_TOKEN;
+  payload: string;
+}
+
+export type SessionAction = SessionSetOAuthToken;
+
+export const sessionSetOAuthToken = (token: string) => {
   return {
-    type: SESSION_SET_TOKEN,
+    type: SESSION_SET_OAUTH_TOKEN,
     payload: token
   };
 };

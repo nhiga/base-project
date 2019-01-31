@@ -17,11 +17,9 @@ class Landing extends Component {
 
   public render() {
     return (
-      <>
-        <div id="landing-hero" className="landing__hero">
-          <Login />
-        </div>
-      </>
+      <div id="landing-hero" className="landing__hero">
+        <Login />
+      </div>
     );
   }
 }

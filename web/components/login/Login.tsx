@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Dispatch } from 'redux';
 
-import { sessionSetToken } from '../../state/redux/actions/session-actions';
-import { IUserName, userSetName } from '../../state/redux/actions/user-actions';
+import { sessionSetOAuthToken } from '../../state/redux/actions/session-actions';
+import { UserName, userSetName } from '../../state/redux/actions/user-actions';
 
 import './login.scss';
 
-interface ILoginProps {
-  user: IUserName;
-  setToken: any;
-  setName: any;
+interface LoginProps {
+  user: UserName;
+  setName: (name: UserName) => void;
+  setOAuthToken: (token: string) => void;
 }
 
-class Login extends React.Component<ILoginProps> {
+// TODO: Define the state interface (how do we define dynamic key names?)
+
+class Login extends React.Component<LoginProps> {
   public state = {
     firstName: '',
     firstNameFocus: false,
@@ -45,7 +47,8 @@ class Login extends React.Component<ILoginProps> {
   public handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (this.state.firstName.length > 0 && this.state.lastName.length > 0) {
-      this.props.setToken(`${this.state.firstName.toUpperCase()}_${this.state.lastName.toUpperCase()}_TOKEN`);
+      const ot = `${this.state.firstName.toUpperCase()}_${this.state.lastName.toUpperCase()}_TOKEN`;
+      this.props.setOAuthToken(ot);
       this.props.setName({ firstName: this.state.firstName, lastName: this.state.lastName });
       this.setState({
         redirectToHome: true
@@ -106,12 +109,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setName: (name: IUserName) => {
-      dispatch(userSetName(name));
-    },
-    setToken: (token: string) => {
-      dispatch(sessionSetToken(token));
-    }
+    setName: (name: UserName) => dispatch(userSetName(name)),
+    setOAuthToken: (token: string) => dispatch(sessionSetOAuthToken(token))
   };
 };
 

@@ -2,13 +2,9 @@ import React from 'react';
 import { hydrate, render, Renderer } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
 
 import App from 'components/app/App';
-import sessionReducer, { initialState as sessionInitialState } from 'state/redux/reducers/session-reducer';
-import userReducer, { initialState as userInitialState } from './state/redux/reducers/user-reducer';
+import configureStore from 'state/redux/store';
 
 import 'styles/main.scss';
 
@@ -23,20 +19,12 @@ let isServerRendered = false;
 if (window.__PRELOADED_STATE__ && window.__PRELOADED_STATE__ !== '{{{state}}}') {
   initialState = JSON.parse(window.__PRELOADED_STATE__);
   isServerRendered = true;
-} else {
-  initialState = {
-    session: sessionInitialState,
-    user: userInitialState
-  };
 }
 delete window.__PRELOADED_STATE__;
+
 // TODO: Remove preloaded state script element
 
-const store = createStore(
-  combineReducers({ session: sessionReducer, user: userReducer }),
-  initialState,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+const store = configureStore(initialState);
 
 const renderApp = (renderFn: Renderer) => {
   renderFn(

@@ -1,3 +1,4 @@
 __build__/
 .vscode/
+coverage/
 node_modules/

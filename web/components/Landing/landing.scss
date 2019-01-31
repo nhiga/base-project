@@ -13,15 +13,5 @@
     background-size: cover;
     background-blend-mode: lighten;
     background-position: center;
-
-    &-title {
-      font-family: $font-stack-display;
-      font-size: 5em;
-      color: white;
-      z-index: 2;
-      text-shadow: 0 0 15px #404040;
-      margin-bottom: 10px;
-      letter-spacing: 15px;
-    }
   }
 }
