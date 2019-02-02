@@ -1,57 +1,123 @@
 import React from 'react';
 
+import Popover from 'components/popover/Popover';
+
 import './text-input.scss';
 
+type InputType = 'text' | 'password';
 interface TextInputProps {
   inputId: string;
   label: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: InputType;
+  isRequired?: boolean;
+  validate?: (
+    value: string
+  ) => {
+    isValid: boolean;
+    error: string;
+  };
 }
 
 interface TextInputState {
   value: string;
-  focus: boolean;
+  isFilled: boolean;
+  isValid: boolean;
+  error: string[];
 }
 
-// TODO: Define the state interface (how do we define dynamic key names?)
-
 class TextInput extends React.Component<TextInputProps, TextInputState> {
+  public static defaultProps = {
+    isRequired: false
+  };
   public state = {
     value: '',
-    focus: false
+    isFilled: false,
+    isValid: true,
+    error: []
+  };
+  private textInput = React.createRef<HTMLInputElement>();
+  public setFocus = () => {
+    if (this.textInput.current) {
+      this.textInput.current.focus();
+    }
+  };
+  public isValid = () => {
+    return this.state.isValid;
+  };
+  public getValue = () => {
+    return this.state.value;
+  };
+  public validate = () => {
+    let isValid = false;
+    const error: string[] = [];
+    let validateResult;
+    if (this.props.isRequired) {
+      if (this.state.value && this.state.value.length > 0) {
+        isValid = true;
+      } else {
+        isValid = false;
+        error.push('This is a required field.');
+      }
+    } else {
+      isValid = true;
+    }
+    if (this.props.validate) {
+      validateResult = this.props.validate(this.state.value);
+      isValid = validateResult.isValid;
+      if (!validateResult.isValid) {
+        error.push(validateResult.error);
+      }
+    }
+    this.setState({
+      isValid,
+      error
+    });
+    return isValid;
   };
   private handleFieldFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     this.setState({
-      focus: true
+      isFilled: true
     });
   };
   private handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       value: e.target.value
     });
-    this.props.onChange(e);
   };
   private handleFieldBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    this.validate();
     if (!e.target.value || e.target.value.length < 1) {
       this.setState({
-        focus: false
+        isFilled: false
+      });
+    } else {
+      this.setState({
+        isFilled: true
       });
     }
   };
   public render() {
+    const { isFilled, isValid } = this.state;
+    const filledModifier = isFilled ? ' text-input--filled' : '';
+    const errorModifier = !isValid ? ' text-input--error' : '';
+
     return (
-      <div className={`text-input__group${this.state.focus ? ' focused' : ''}`}>
+      <div className={`text-input__group${filledModifier}${errorModifier}`}>
+        <Popover content={this.state.error}>
+          <i id="header__menu-btn-icon" className="text-input__error-icon fas fa-exclamation-triangle" />
+        </Popover>
         <label htmlFor={this.props.inputId} className="text-input__label">
           {this.props.label}
         </label>
         <input
-          type="text"
+          type={this.props.type}
           id={this.props.inputId}
           className="text-input__field"
           value={this.state.value}
           onFocus={this.handleFieldFocus}
           onChange={this.handleFieldChange}
           onBlur={this.handleFieldBlur}
+          ref={this.textInput}
         />
       </div>
     );

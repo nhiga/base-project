@@ -1,0 +1,90 @@
+.popover {
+  &__container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    &.popover--visible {
+      & > .popover__content {
+        transform: scale(1);
+        opacity: 1;
+        z-index: 10;
+      }
+
+      & > .error-icon {
+        animation: none;
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 3em;
+    right: -7em;
+    width: 16em;
+    margin: 0;
+    padding: 1em;
+    border: 1px solid #ee4466;
+    border-radius: 0.5em;
+    background: #ee4466;
+    color: #ffffff;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      opacity 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
+
+    &-clickable {
+      display: inline;
+      position: absolute;
+      right: 0;
+      bottom: 0.5em;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    &:before {
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      border-right: 1px solid #ee4466;
+      border-bottom: 1px solid #ee4466;
+      background: #ee4466;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 3em;
+      height: 0.5em;
+      border-right: 1px solid #ee4466;
+      border-bottom: 1px solid #ee4466;
+      background: #ee4466;
+    }
+
+    & {
+      &--above {
+        &:before {
+          top: 100%;
+          left: 7.5em;
+          margin-top: -0.8em;
+          border-top: 0;
+          border-left: 0;
+        }
+
+        &:after {
+          bottom: 0;
+          left: 7.5em;
+          border-top: 0;
+          border-left: 0;
+        }
+      }
+    }
+  }
+}

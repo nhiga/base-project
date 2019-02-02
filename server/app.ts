@@ -4,7 +4,7 @@ import path from 'path';
 
 import ApplicationConfiguration from 'utils/application-configuration';
 import { BUILD_FOLDER, CSS_FOLDER, FONTS_FOLDER, IMAGES_FOLDER, JS_FOLDER, PUBLIC_FOLDER } from 'utils/server.config';
-import { shouldCompress } from 'utils/server.utils';
+import { shouldCompress } from 'utils/server-utils';
 import pageController from './controllers/page-controller';
 import restRouter from './routes/rest-router';
 
