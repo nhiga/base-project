@@ -34,7 +34,7 @@ class Header extends Component<IHeaderProps> {
             <div className="header__title">
               <img className="header__title-logo" src={logo} alt="logo" />
               <span className="header__title-text">
-                <Link id="header__landing-link" to="/">
+                <Link id="header__landing-link" to="/home">
                   {title}
                 </Link>
               </span>

@@ -10,11 +10,6 @@ class NavBar extends Component {
       <nav className="navbar">
         <ul>
           <li className="navbar__link">
-            <NavLink exact to="/home">
-              Home
-            </NavLink>
-          </li>
-          <li className="navbar__link">
             <NavLink exact to="/search">
               Search
             </NavLink>

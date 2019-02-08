@@ -1,4 +1,4 @@
-import { USER_SET_NAME, UserState, UserAction } from '../actions/user-actions';
+import { USER_SET_INFO, UserInfo, UserActionType } from '../actions/user-actions';
 
 export const initialState = {
   firstName: 'DEFAULT_FIRST_NAME',
@@ -6,13 +6,12 @@ export const initialState = {
   roleId: 0
 };
 
-const userReducer = (state: UserState = initialState, action: UserAction) => {
+const userReducer = (state: UserInfo = initialState, action: UserActionType) => {
   switch (action.type) {
-    case USER_SET_NAME:
-      state = {
+    case USER_SET_INFO:
+      return {
         ...state,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName
+        ...action.payload
       };
   }
   return state;

@@ -1,8 +1,8 @@
-import { userSetName } from '../user-actions';
+import { userSetInfo } from '../user-actions';
 
 describe('user-actions', () => {
-  it('Creates a USER_SET_NAME action', () => {
-    const action = userSetName({ firstName: 'first', lastName: 'last' });
-    expect(action).toEqual({ type: 'USER_SET_NAME', payload: { firstName: 'first', lastName: 'last' } });
+  it('Creates a USER_SET_INFO action', () => {
+    const action = userSetInfo({ firstName: 'first', lastName: 'last', roleId: 1 });
+    expect(action).toEqual({ type: 'USER_SET_INFO', payload: { firstName: 'first', lastName: 'last', roleId: 1 } });
   });
 });

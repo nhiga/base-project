@@ -1,29 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
-import { sessionSetOAuthToken } from 'state/redux/actions/session-actions';
-import { UserName, userSetName } from 'state/redux/actions/user-actions';
+import { AppState } from 'state/redux/store';
+import { UserActionType, userLogin } from 'state/redux/actions/user-actions';
 import TextInput from 'components/text-input/TextInput';
-import { validatePassword } from 'utils/user-utils';
 
 import './login.scss';
 
-interface LoginProps {
-  setName: (name: UserName) => void;
-  setOAuthToken: (token: string) => void;
+interface LoginProps extends RouteComponentProps {
+  isAuthenticated?: boolean;
+  login: (username: string, password: string) => (dispatch: Dispatch) => void;
 }
 
-interface LoginState {
-  redirectToHome: boolean;
-  [x: string]: string | boolean;
-}
-
-class Login extends React.Component<LoginProps, LoginState> {
-  public state = {
-    redirectToHome: false
-  };
+class Login extends React.Component<LoginProps> {
   private usernameInput = React.createRef<TextInput>();
   private passwordInput = React.createRef<TextInput>();
   public componentDidMount() {
@@ -35,46 +27,39 @@ class Login extends React.Component<LoginProps, LoginState> {
     e.preventDefault();
     let usernameValid = false;
     let passwordValid = false;
-    if (this.usernameInput.current && this.usernameInput.current.validate()) {
-      usernameValid = true;
-    }
-    if (this.passwordInput.current && this.passwordInput.current.validate()) {
-      passwordValid = true;
-    }
-    if (usernameValid && passwordValid) {
-      const firstName = 'AUTHENTICATED_FIRST_NAME';
-      const lastName = 'AUTHENTICATED_LAST_NAME';
-      const ot = 'AUTHENTICATED_TOKEN';
-      this.props.setOAuthToken(ot);
-      this.props.setName({ firstName, lastName });
-      this.setState({
-        redirectToHome: true
-      });
-    } else {
-      if (!usernameValid && this.usernameInput.current) {
-        this.usernameInput.current.setFocus();
-      } else if (!passwordValid && this.passwordInput.current) {
-        this.passwordInput.current.setFocus();
+
+    if (this.usernameInput.current && this.passwordInput.current) {
+      if (this.usernameInput.current && this.usernameInput.current.validate()) {
+        usernameValid = true;
       }
+      if (this.passwordInput.current && this.passwordInput.current.validate()) {
+        passwordValid = true;
+      }
+      if (usernameValid && passwordValid) {
+        this.props.login(this.usernameInput.current.getValue(), this.passwordInput.current.getValue());
+      } else {
+        if (!usernameValid && this.usernameInput.current) {
+          this.usernameInput.current.setFocus();
+        } else if (!passwordValid && this.passwordInput.current) {
+          this.passwordInput.current.setFocus();
+        }
+      }
+    } else {
+      // TODO: We lost references to the inputs. Reload the page?
+      console.log(`[Login] Invalid input reference`);
     }
   };
   public render() {
-    if (this.state.redirectToHome) {
-      return <Redirect to="/home" />;
+    if (this.props.isAuthenticated) {
+      const { from } = this.props.location.state;
+      return <Redirect to={from ? from : '/home'} />;
     }
 
     return (
       <form className="login">
         <section className="login__fields">
           <TextInput ref={this.usernameInput} inputId="username" label="Username" isRequired />
-          <TextInput
-            ref={this.passwordInput}
-            inputId="password"
-            label="Password"
-            type="password"
-            validate={validatePassword}
-            isRequired
-          />
+          <TextInput ref={this.passwordInput} inputId="password" label="Password" type="password" isRequired />
         </section>
         <section className="login__cta-section">
           <input type="submit" value="log in" onClick={this.handleSubmit} />
@@ -87,14 +72,21 @@ class Login extends React.Component<LoginProps, LoginState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapStateToProps = (state: AppState) => {
   return {
-    setName: (name: UserName) => dispatch(userSetName(name)),
-    setOAuthToken: (token: string) => dispatch(sessionSetOAuthToken(token))
+    isAuthenticated: state.session.isAuthenticated
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Login);
+const mapDispatchToProps = (dispatch: Dispatch | ThunkDispatch<{}, {}, UserActionType>) => {
+  return {
+    login: (username: string, password: string) => dispatch<any>(userLogin(username, password))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

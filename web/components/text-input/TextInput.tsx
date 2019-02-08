@@ -7,8 +7,10 @@ import './text-input.scss';
 type InputType = 'text' | 'password';
 interface TextInputProps {
   inputId: string;
-  label: string;
+  label?: string;
+  placeholder?: string;
   type?: InputType;
+  className?: string;
   isRequired?: boolean;
   validate?: (
     value: string
@@ -27,6 +29,8 @@ interface TextInputState {
 
 class TextInput extends React.Component<TextInputProps, TextInputState> {
   public static defaultProps = {
+    label: null,
+    placeholder: null,
     isRequired: false
   };
   public state = {
@@ -98,21 +102,25 @@ class TextInput extends React.Component<TextInputProps, TextInputState> {
   };
   public render() {
     const { isFilled, isValid } = this.state;
-    const filledModifier = isFilled ? ' text-input--filled' : '';
-    const errorModifier = !isValid ? ' text-input--error' : '';
+    const groupFilledModifier = isFilled ? ' text-input--filled' : '';
+    const groupErrorModifier = !isValid ? ' text-input--error' : '';
+    const inputClassModifier = this.props.className ? ` ${this.props.className}` : '';
 
     return (
-      <div className={`text-input__group${filledModifier}${errorModifier}`}>
+      <div className={`text-input__group${groupFilledModifier}${groupErrorModifier}`}>
         <Popover content={this.state.error}>
           <i id="header__menu-btn-icon" className="text-input__error-icon fas fa-exclamation-triangle" />
         </Popover>
-        <label htmlFor={this.props.inputId} className="text-input__label">
-          {this.props.label}
-        </label>
+        {this.props.label ? (
+          <label htmlFor={this.props.inputId} className="text-input__label">
+            {this.props.label}
+          </label>
+        ) : null}
         <input
           type={this.props.type}
           id={this.props.inputId}
-          className="text-input__field"
+          className={`text-input__field${inputClassModifier}`}
+          placeholder={!this.props.label ? this.props.placeholder : ''}
           value={this.state.value}
           onFocus={this.handleFieldFocus}
           onChange={this.handleFieldChange}

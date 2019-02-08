@@ -1,37 +1,35 @@
-/* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react';
+import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 import PageContent from 'components/page-content/PageContent';
+import TextInput from 'components/text-input/TextInput';
 
 import './search.scss';
 
-interface ISearchState {
+interface SearchProps extends RouteComponentProps<{}> {}
+
+interface SearchState {
   searchTerm: string;
 }
 
-class Search extends Component<{}, ISearchState> {
-  public state = {
-    searchTerm: ''
-  };
-
-  public handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchTerm: e.target.value });
-  };
-
+class Search extends React.Component<SearchProps, SearchState> {
+  private searchInput = React.createRef<TextInput>();
+  public componentDidMount() {
+    if (this.searchInput.current) {
+      this.searchInput.current.setFocus();
+    }
+  }
   public render() {
-    const { searchTerm } = this.state;
-
     return (
       <PageContent>
         <main className="page-content__main">
           <h2 className="page-content__title">Search</h2>
           <div className="search__input">
-            <input
+            <TextInput
+              ref={this.searchInput}
+              inputId="search-term"
               className="search__input-text"
-              type="search"
               placeholder="Search by name, album, or song"
-              value={searchTerm}
-              onChange={this.handleSearchChange}
             />
           </div>
         </main>
@@ -40,4 +38,4 @@ class Search extends Component<{}, ISearchState> {
   }
 }
 
-export default Search;
+export default withRouter(Search);

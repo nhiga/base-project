@@ -7,6 +7,7 @@ import About from 'components/about/About';
 import Home from 'components/home/Home';
 import Landing from 'components/landing/Landing';
 import NotFound from 'components/not-found/NotFound';
+import PrivateRoute from 'components/private-route/PrivateRoute';
 import Search from 'components/search/Search';
 
 class App extends Component {
@@ -14,8 +15,8 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/" exact component={Landing} />
-        <Route path="/home" exact component={Home} />
-        <Route path="/search" exact component={Search} />
+        <PrivateRoute path="/home" exact component={Home} />
+        <PrivateRoute path="/search" exact component={Search} />
         <Route path="/about" exact component={About} />
         <Route component={NotFound} />
       </Switch>

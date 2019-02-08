@@ -3,7 +3,12 @@
 .text-input {
   &__group {
     position: relative;
-    margin-top: 1.5em;
+    width: inherit;
+    // margin-top: 1.5em;
+
+    & + & {
+      margin-top: 1.5em;
+    }
 
     &.text-input--filled {
       & .text-input__label {

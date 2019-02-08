@@ -10,7 +10,7 @@ import userReducer from './reducers/user-reducer';
 
 // TODO: Implement redux-persist
 
-interface State {
+export interface AppState {
   session: SessionState;
   user: UserState;
 }
@@ -19,7 +19,7 @@ interface ServerState {
   session: SessionState;
 }
 
-const configureStore = (initialState: State | ServerState) => {
+const configureStore = (initialState?: AppState | ServerState) => {
   return createStore(
     combineReducers({ session: sessionReducer, user: userReducer }),
     initialState,

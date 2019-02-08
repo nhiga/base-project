@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import path from 'path';
@@ -14,6 +15,7 @@ const template = ApplicationConfiguration.getFile(`${path.join(BUILD_FOLDER, PUB
 ApplicationConfiguration.compileTemplate(template);
 
 //#region MIDDLEWARE
+app.use(bodyParser.json());
 app.use(compression({ filter: shouldCompress }));
 app.use((req, res, next) => {
   // TODO: Replace console log with Logger component

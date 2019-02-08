@@ -13,7 +13,6 @@ class Popover extends React.Component<PopoverProps> {
   private content = React.createRef<HTMLDivElement>();
   private clickableContent = React.createRef<HTMLSpanElement>();
   private handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    // e.stopPropagation();
     this.setState({
       isVisible: !this.state.isVisible
     });
