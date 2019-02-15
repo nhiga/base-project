@@ -1,11 +1,18 @@
 # base-project
 
-A base React project including:
+A base project including:
 
-- An Express server for API endpoints
-- Webpack configuration for client and server side development
-- Client and server side hot reloading
-- ESLint
+- React v16.x
+- Redux
+- React Router
+- Typescript
+- Express server for server-side rendering and API endpoints
+- Client-side and server-side hot reloading for developement
+- Webpack with Babel for client and server side code compilation
+- TSLint
+- Prettier
+- SASS with PostCSS for CSS processing
+- Jest and Enzyme for unit testing
 
 ## Table of Contents
 

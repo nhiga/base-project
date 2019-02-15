@@ -45,7 +45,7 @@ class Login extends React.Component<LoginProps> {
         }
       }
     } else {
-      // TODO: We lost references to the inputs. Reload the page?
+      // TODO: If we get here it means we lost references to the inputs. Reload the page?
       console.log(`[Login] Invalid input reference`);
     }
   };

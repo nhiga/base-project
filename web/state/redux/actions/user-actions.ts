@@ -31,7 +31,7 @@ export const userSetInfo = (userInfo: UserInfo) => ({
 // UserActionType is the union of User actions
 export type UserActionType = UserSetInfo /* | <AnotherUserAction> */;
 
-// #region ASYNC ACTION CREATORS (THUNKS)
+// #region ASYNC ACTION CREATORS
 // NOTE: This login functionality is only for the purposes of thunk usage
 export const userLogin = (username: string, password: string) => {
   return (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
@@ -55,4 +55,4 @@ export const userLogin = (username: string, password: string) => {
       });
   };
 };
-// #endregion ASYNC ACTION CREATORS (THUNKS)
+// #endregion ASYNC ACTION CREATORS
