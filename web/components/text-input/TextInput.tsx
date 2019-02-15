@@ -45,12 +45,8 @@ class TextInput extends React.Component<TextInputProps, TextInputState> {
       this.textInput.current.focus();
     }
   };
-  public isValid = () => {
-    return this.state.isValid;
-  };
-  public getValue = () => {
-    return this.state.value;
-  };
+  public isValid = () => this.state.isValid;
+  public getValue = () => this.state.value;
   public validate = () => {
     let isValid = false;
     const error: string[] = [];

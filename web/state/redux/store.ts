@@ -19,12 +19,11 @@ interface ServerState {
   session: SessionState;
 }
 
-const configureStore = (initialState?: AppState | ServerState) => {
-  return createStore(
+const configureStore = (initialState?: AppState | ServerState) =>
+  createStore(
     combineReducers({ session: sessionReducer, user: userReducer }),
     initialState,
     composeWithDevTools(applyMiddleware(thunk))
   );
-};
 
 export default configureStore;

@@ -22,12 +22,10 @@ interface UserSetInfo {
   payload: UserInfo;
 }
 
-export const userSetInfo = (userInfo: UserInfo) => {
-  return {
-    type: USER_SET_INFO,
-    payload: userInfo
-  };
-};
+export const userSetInfo = (userInfo: UserInfo) => ({
+  type: USER_SET_INFO,
+  payload: userInfo
+});
 // #endregion USER ACTION CREATORS
 
 // UserActionType is the union of User actions

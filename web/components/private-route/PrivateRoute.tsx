@@ -28,11 +28,9 @@ const PrivateRoute = ({
   </>
 );
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    isAuthenticated: state.session.isAuthenticated
-  };
-};
+const mapStateToProps = (state: AppState) => ({
+  isAuthenticated: state.session.isAuthenticated
+});
 
 export default withRouter(
   connect(

@@ -20,24 +20,20 @@ export interface SessionSetOAuthToken {
   payload: string;
 }
 
-export const sessionSetOAuthToken = (token: OAuthToken) => {
-  return {
-    type: SESSION_SET_OAUTH_TOKEN,
-    payload: token.ot
-  };
-};
+export const sessionSetOAuthToken = (token: OAuthToken) => ({
+  type: SESSION_SET_OAUTH_TOKEN,
+  payload: token.ot
+});
 
 export interface SessionSetAuthenticated {
   type: SESSION_SET_AUTHENTICATED;
   payload: boolean;
 }
 
-export const sessionSetAuthenticated = (isAuthenticated: boolean) => {
-  return {
-    type: SESSION_SET_AUTHENTICATED,
-    payload: isAuthenticated
-  };
-};
+export const sessionSetAuthenticated = (isAuthenticated: boolean) => ({
+  type: SESSION_SET_AUTHENTICATED,
+  payload: isAuthenticated
+});
 // #endregion ACTION CREATORS
 
 // SessionActionType is the union of User actions

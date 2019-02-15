@@ -16,7 +16,6 @@
   "author": "Neal Higa",
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",

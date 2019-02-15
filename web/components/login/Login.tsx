@@ -51,10 +51,14 @@ class Login extends React.Component<LoginProps> {
   };
   public render() {
     if (this.props.isAuthenticated) {
-      const { from } = this.props.location.state;
+      let from;
+      if (this.props.location && this.props.location.state) {
+        from = this.props.location.state.from;
+      }
       return <Redirect to={from ? from : '/home'} />;
     }
 
+    // TODO: Create Form component
     return (
       <form className="login">
         <section className="login__fields">
@@ -72,17 +76,13 @@ class Login extends React.Component<LoginProps> {
   }
 }
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    isAuthenticated: state.session.isAuthenticated
-  };
-};
+const mapStateToProps = (state: AppState) => ({
+  isAuthenticated: state.session.isAuthenticated
+});
 
-const mapDispatchToProps = (dispatch: Dispatch | ThunkDispatch<{}, {}, UserActionType>) => {
-  return {
-    login: (username: string, password: string) => dispatch<any>(userLogin(username, password))
-  };
-};
+const mapDispatchToProps = (dispatch: Dispatch | ThunkDispatch<{}, {}, UserActionType>) => ({
+  login: (username: string, password: string) => dispatch<any>(userLogin(username, password))
+});
 
 export default withRouter(
   connect(
