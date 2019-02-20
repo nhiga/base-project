@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
-import { Dispatch } from 'redux';
+import { Dispatch, AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { AppState } from 'state/redux/store';
@@ -12,7 +12,7 @@ import './login.scss';
 
 interface LoginProps extends RouteComponentProps {
   isAuthenticated?: boolean;
-  login: (username: string, password: string) => (dispatch: Dispatch) => void;
+  login: (username: string, password: string) => void;
 }
 
 class Login extends React.Component<LoginProps> {
@@ -80,8 +80,8 @@ const mapStateToProps = (state: AppState) => ({
   isAuthenticated: state.session.isAuthenticated
 });
 
-const mapDispatchToProps = (dispatch: Dispatch | ThunkDispatch<{}, {}, UserActionType>) => ({
-  login: (username: string, password: string) => dispatch<any>(userLogin(username, password))
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, UserActionType> & Dispatch) => ({
+  login: (username: string, password: string) => dispatch(userLogin(username, password))
 });
 
 export default withRouter(
